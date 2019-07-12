@@ -1,0 +1,251 @@
+/****************************************************************/
+/*************      Floating Findbar on Top      ****************/
+/****************************************************************/
+
+findbar{
+  -moz-box-ordinal-group: 0;
+  margin-bottom: calc(0px - 2 * var(--toolbarbutton-inner-padding) -  25px);
+  position: relative;
+  border-top: none !important;
+  transition: transform 82ms linear, opacity 82ms linear 32ms !important;
+  background: none !important;
+  pointer-events: none;
+}
+
+.findbar-container > .findbar-find-fast{
+  padding: var(--toolbarbutton-inner-padding) 1px;
+  margin: 0 !important;
+}
+
+findbar[hidden]{ transform: translateY(-30px);}
+
+findbar > .findbar-container,
+findbar > .close-icon{
+  border: 1px solid var(--chrome-content-separator-color);
+  border-width: 0 0 1px 0px;
+  background: transparent !important;
+  pointer-events: auto;
+}
+findbar > .findbar-container{
+  -moz-box-direction: reverse;
+  border-left-width: 1px;
+}
+
+findbar > .findbar-container > hbox{ margin: 0 5px }
+
+findbar::before{
+  content:"";
+  display: -moz-box;
+  -moz-box-flex: 100;
+}
+
+/*
+Move findbar so it isn't over the scrollbar
+Delete if you want findbar to begin from right window edge
+*/
+findbar{
+  margin-right: 16px;
+  border-right: 1px solid var(--chrome-content-separator-color);
+}
+
+/*****************************************************/
+/*  Removal of stuff    */ 
+/********************************************************/
+
+/*  This removes the stuff normally in the menubar  */
+#file-menu, #edit-menu, #view-menu, #history-menu,
+#bookmarksMenu, #tools-menu, #moreTools-menu, #helpMenu {
+    visibility: collapse
+}
+
+#pageActionButton, #pocket-button, 
+#identity-box, .urlbar-history-dropmarker {display: none}
+.tabs-newtab-button {display: none}
+
+
+/*****************************************************/
+/*  Removal of stuff    */ 
+/********************************************************/
+
+/*  Inside the right-click context menu */
+
+/*
+ * Cleaner Context Menu
+ */
+/* page menu */
+#context-openlink,    /* in new window */
+#context-bookmarklink,
+#context-savelinktopocket,
+#context-pocket,
+#context-sendimage,
+#context-setDesktopBackground,
+
+/* tab menu */
+#context_toggleMuteTab,
+#context_moveTabOptions,
+#context_undoCloseTab { 
+  display: none !important; 
+}
+
+/* 
+ * Cleaner Bookmark menu 
+ */
+#BMB_bookmarksShowAllTop, 
+#BMB_bookmarksShowAllTop+menuseparator,
+#BMB_viewBookmarksSidebar,
+#BMB_bookmarksToolbar,
+/* #BMB_unsortedBookmarks, */
+/* #BMB_bookmarksShowAll,  */
+#BMB_mobileBookmarks+menuseparator {
+  display: none !important;
+}
+
+
+
+
+
+
+
+
+
+/*
+menupopup,
+menupopup > menu > menupopup,
+menupopup scrollbox,
+popup,
+popup > menu > menupopup {
+  -moz-appearance: none!important;
+  background: var(--in-content-box-background)!important;
+  border: none!important;
+  padding: 0!important
+}
+menu.subviewbutton > .menu-right {
+  fill: #000!important
+}
+.menu-right {
+  filter: invert(95%)!important
+}
+#context-navigation menuitem,
+.panel-arrowcontent {
+  color: var(--in-content-selected-text)!important;
+  background: var(--in-content-box-background)!important
+}
+#context-navigation menuitem:hover {
+  background: var(--in-content-primary-button-background-hover)!important
+}
+menuitem,
+menupopup menu {
+  -moz-appearance: none!important;
+  color: #87cefa !important;
+  background: var(--in-content-box-background)!important
+}
+menupopup menuseparator {
+  -moz-appearance: none!important;
+  padding: 1px!important;
+  margin: 5px 0!important;
+  background: var(--in-content-table-border-dark-color)!important;
+  border-top: none!important
+}
+#context-navigation menuitem[disabled=true],
+menu[disabled=true],
+menuitem[disabled=true] {
+  color: var(--in-content-box-border-color)!important
+}
+menu[disabled=true]:hover,
+menuitem:hover[disabled=true] {
+  color: var(--in-content-box-border-color)!important;
+  background-color: var(--in-content-box-background)!important
+}
+#context-navigation menuitem:hover[disabled=true] {
+  color: var(--in-content-box-border-color)!important;
+  background-color: var(--in-content-box-background)!important
+}
+menuitem[_moz-menuactive=true],
+menupopup menu[_moz-menuactive=true] {
+  color: #ffaaff !important;
+  background-color: var(--in-content-primary-button-background-hover)!important
+}
+vbox#sidebar-box.chromeclass-extrachrome {
+  border-color: var(--in-content-category-header-background)!important;
+  border-right: 1px!important;
+  border-style: solid!important
+}
+#_testpilot-containers_7 .menu-iconic-left,
+#treestyletab_piro_sakura_ne_jp_8 .menu-iconic-left {
+  filter: invert(55%)!important
+}
+@media screen and (-moz-windows-theme),
+screen and (-moz-windows-classic),
+screen and (-moz-windows-default-theme),
+screen and (-moz-os-version:windows-win7),
+screen and (-moz-os-version:windows-win8),
+screen and (-moz-os-version:windows-win10) {
+  menupopup menuseparator {
+    padding: 0!important;
+    border-color: var(--in-content-table-border-dark-color)!important
+  }
+  #context-navigation,
+  #context-sep-navigation {
+    padding: 0!important
+  }
+  #BMB_bookmarksPopup menupopup {
+    padding: 4px 0 0!important
+  }
+  #BMB_bookmarksPopup menupopup[placespopup=true] > hbox,
+  #personal-bookmarks menupopup,
+  .box-inherit scrollbox-innerbox,
+  .panel-arrowcontent,
+  menupopup#BMB_bookmarksPopup > menu > menupopup > hbox,
+  menupopup#PlacesChevronPopup,
+  menupopup#bookmarksMenuPopup,
+  menupopup#bookmarksMenuPopup > menu > menupopup,
+  menupopup#bookmarksMenuPopup menupopup[placespopup=true],
+  menupopup#contentAreaContextMenu,
+  menupopup#contentAreaContextMenu menupopup,
+  menupopup#downloadsContextMenu,
+  menupopup#placesContext,
+  menupopup#tabContextMenu,
+  menupopup#tabContextMenu menupopup,
+  menupopup#toolbar-context-menu,
+  toolbaritem#menubar-items menupopup {
+    border-color: var(--in-content-box-background)!important;
+    border-width: 1px!important;
+    border-style: solid!important
+  }
+  #bookmarksMenuPopup,
+  #personal-bookmarks menupopup .bookmark-item,
+  menupopup#goPopup {
+    padding-left: 4px!important;
+    padding-right: 4px!important
+  }
+  menupopup#contentAreaContextMenu menupopup,
+  menupopup#tabContextMenu > menu > menupopup > .popup-internal-box,
+  menupopup#toolbar-context-menu {
+    padding-left: 2px!important;
+    padding-right: 2px!important
+  }
+  menupopup,
+  menupopup > menu > menupopup {
+    padding: 4px 0!important
+  }
+  #customization-toolbar-menu,
+  toolbaritem#menubar-items menupopup,
+  toolbaritem#menubar-items menupopup > menu > menupopup {
+    padding-left: 2px!important;
+    padding-right: 2px!important
+  }
+  #personal-bookmarks menupopup menuitem,
+  menupopup#contentAreaContextMenu menu,
+  menupopup#contentAreaContextMenu menuitem {
+    padding-top: 1px!important;
+    padding-bottom: 1px!important
+  }
+  menupopup#contentAreaContextMenu > .menuitem-iconic {
+    padding-top: 0!important;
+    padding-bottom: 0!important
+  }
+  menupopup .menu-right {
+    margin-right: 0!important
+  }
+}
+*/

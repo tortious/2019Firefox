@@ -1,0 +1,715 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
+/* namespace for HTML elements */
+@namespace xbl url("http://www.mozilla.org/xbl");
+
+
+/*  another code i saw re js capabilities - just trying it out. delete if probs occur  */
+toolbarbutton#alltabs-button {
+    -moz-binding: url(data:text/plain;charset=utf-8;base64,PD94bWwgdmVyc2lvbj0iMS4wIj8+CjwhLS0gQ29weXJpZ2h0IChjKSAyMDE3IEhhZ2dhaSBOdWNoaQpBdmFpbGFibGUgZm9yIHVzZSB1bmRlciB0aGUgTUlUIExpY2Vuc2U6Cmh0dHBzOi8vb3BlbnNvdXJjZS5vcmcvbGljZW5zZXMvTUlUCiAtLT4KCjwhLS0gUnVuIHVzZXJDaHJvbWUuanMvdXNlckNocm9tZS54dWwgYW5kIC51Yy5qcy8udWMueHVsLy5jc3MgZmlsZXMgIC0tPgo8YmluZGluZ3MgeG1sbnM9Imh0dHA6Ly93d3cubW96aWxsYS5vcmcveGJsIj4KICAgIDxiaW5kaW5nIGlkPSJqcyIgZXh0ZW5kcz0iY2hyb21lOi8vZ2xvYmFsL2NvbnRlbnQvYmluZGluZ3MvdG9vbGJhcmJ1dHRvbi54bWwjdG9vbGJhcmJ1dHRvbi1iYWRnZWQiPgogICAgICAgIDxpbXBsZW1lbnRhdGlvbj4KICAgICAgICAgICAgPGNvbnN0cnVjdG9yPjwhW0NEQVRBWwogICAgICAgICAgICAgICAgaWYod2luZG93LnVzZXJDaHJvbWVKc01vZCkgcmV0dXJuOwogICAgICAgICAgICAgICAgd2luZG93LnVzZXJDaHJvbWVKc01vZCA9IHRydWU7CgogICAgICAgICAgICAgICAgdmFyIGNocm9tZUZpbGVzID0gRmlsZVV0aWxzLmdldERpcigiVUNocm0iLCBbXSkuZGlyZWN0b3J5RW50cmllczsKICAgICAgICAgICAgICAgIHZhciB4dWxGaWxlcyA9IFtdOwogICAgICAgICAgICAgICAgdmFyIHNzcyA9IENjWydAbW96aWxsYS5vcmcvY29udGVudC9zdHlsZS1zaGVldC1zZXJ2aWNlOzEnXS5nZXRTZXJ2aWNlKENpLm5zSVN0eWxlU2hlZXRTZXJ2aWNlKTsKCiAgICAgICAgICAgICAgICB3aGlsZShjaHJvbWVGaWxlcy5oYXNNb3JlRWxlbWVudHMoKSkgewogICAgICAgICAgICAgICAgICAgIHZhciBmaWxlID0gY2hyb21lRmlsZXMuZ2V0TmV4dCgpLlF1ZXJ5SW50ZXJmYWNlKENpLm5zSUZpbGUpOwogICAgICAgICAgICAgICAgICAgIHZhciBmaWxlVVJJID0gU2VydmljZXMuaW8ubmV3RmlsZVVSSShmaWxlKTsKCiAgICAgICAgICAgICAgICAgICAgaWYoZmlsZS5pc0ZpbGUoKSkgewogICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gIm5vbmUiOwogICAgICAgICAgICAgICAgICAgICAgICBpZigvKF51c2VyQ2hyb21lfFwudWMpXC5qcyQvaS50ZXN0KGZpbGUubGVhZk5hbWUpKSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gInVzZXJjaHJvbWUvanMiOwogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsc2UgaWYoLyhedXNlckNocm9tZXxcLnVjKVwueHVsJC9pLnRlc3QoZmlsZS5sZWFmTmFtZSkpIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGUgPSAidXNlcmNocm9tZS94dWwiOwogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsc2UgaWYoL1wuYXNcLmNzcyQvaS50ZXN0KGZpbGUubGVhZk5hbWUpKSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gImFnZW50c2hlZXQiOwogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgIGVsc2UgaWYoL14oPyEodXNlckNocm9tZXx1c2VyQ29udGVudClcLmNzcyQpLitcLmNzcyQvaS50ZXN0KGZpbGUubGVhZk5hbWUpKSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlID0gInVzZXJzaGVldCI7CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgaWYodHlwZSAhPSAibm9uZSIpIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCItLS0tLS0tLS0tXFwgIiArIGZpbGUubGVhZk5hbWUgKyAiICgiICsgdHlwZSArICIpIik7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cnkgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGlmKHR5cGUgPT0gInVzZXJjaHJvbWUvanMiKSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFNlcnZpY2VzLnNjcmlwdGxvYWRlci5sb2FkU3ViU2NyaXB0V2l0aE9wdGlvbnMoZmlsZVVSSS5zcGVjLCB7dGFyZ2V0OiB3aW5kb3csIGlnbm9yZUNhY2hlOiB0cnVlfSk7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVsc2UgaWYodHlwZSA9PSAidXNlcmNocm9tZS94dWwiKSB7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHh1bEZpbGVzLnB1c2goZmlsZVVSSS5zcGVjKTsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgZWxzZSBpZih0eXBlID09ICJhZ2VudHNoZWV0IikgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZighc3NzLnNoZWV0UmVnaXN0ZXJlZChmaWxlVVJJLCBzc3MuQUdFTlRfU0hFRVQpKQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgc3NzLmxvYWRBbmRSZWdpc3RlclNoZWV0KGZpbGVVUkksIHNzcy5BR0VOVF9TSEVFVCk7CiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGVsc2UgaWYodHlwZSA9PSAidXNlcnNoZWV0IikgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBpZighc3NzLnNoZWV0UmVnaXN0ZXJlZChmaWxlVVJJLCBzc3MuVVNFUl9TSEVFVCkpCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzc3MubG9hZEFuZFJlZ2lzdGVyU2hlZXQoZmlsZVVSSSwgc3NzLlVTRVJfU0hFRVQpOwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0gY2F0Y2goZSkgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCIjIyMjIyMjIyMjIEVSUk9SOiAiICsgZSArICIgYXQgIiArIGUubGluZU51bWJlciArICI6IiArIGUuY29sdW1uTnVtYmVyKTsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvbnNvbGUubG9nKCItLS0tLS0tLS0tLyAiICsgZmlsZS5sZWFmTmFtZSk7CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgc2V0VGltZW91dChmdW5jdGlvbiBsb2FkWFVMKCkgewogICAgICAgICAgICAgICAgICAgIGlmKHh1bEZpbGVzLmxlbmd0aCA+IDApIHsKICAgICAgICAgICAgICAgICAgICAgICAgZG9jdW1lbnQubG9hZE92ZXJsYXkoeHVsRmlsZXMuc2hpZnQoKSwgbnVsbCk7CiAgICAgICAgICAgICAgICAgICAgICAgIHNldFRpbWVvdXQobG9hZFhVTCwgNSk7CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfSwgMCk7CiAgICAgICAgICAgIF1dPjwvY29uc3RydWN0b3I+CiAgICAgICAgPC9pbXBsZW1lbnRhdGlvbj4KICAgIDwvYmluZGluZz4KPC9iaW5kaW5ncz4K);
+} 
+
+
+#statuspanel-label { 
+-moz-binding: url("userChrome.xml#js");}
+
+
+/*something new im trying out - urlbar is in tabstoolbar    */
+:root:not([customizing]) #nav-bar {
+    max-height: 0px !important;
+    min-height: 0px !important;
+}
+
+
+.search-panel-header, .search-panel-one-offs {
+    display: none !important;
+}
+
+
+#urlbar-results {
+    background: #202020 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 700px !important;
+    margin-top: -2px !important;
+}
+
+panel#urlbar-results {
+   --item-padding-start: 0 !important;
+   --item-padding-end: 0 !important;
+}
+
+.urlbarView-row:hover, .urlbarView-row[selected] {
+background-color: #87cefa !important;
+}
+/*********************************************************************/
+/*********************************************************************/
+
+
+/*********************************************************************/
+/*********************************************************************/
+
+/**********************************************************************/
+/*****************    Menubar Appears in TabsToolbar  *****************/
+/**********************************************************************/
+/* Makes menubar to appear in tabs toolbar pushing tabs to the side */
+#toolbar-menubar:not([inactive]) ~ #TabsToolbar{
+	margin-top: -30px !important;}
+:root[sizemode="maximized"] #toolbar-menubar:not([inactive]) ~ #TabsToolbar {
+	margin-top: -30px !important;}
+#toolbar-menubar {background: transparent !important;}
+#PlacesToolbarItems, #PlacesToolbar, #PlacesToolbarDropIndicatorHolder {
+    height: 30px !important;
+    background: transparent !important;}
+
+/********************************************************************/
+/********************        Grouping       *************************/
+/********************************************************************/
+#titlebar {-moz-box-ordinal-group: 1;}
+#TabsToolbar, #TabsToolbar-customization-target {background: linear-gradient(0deg, #0a84ff 0%,#090909 15%,#3c3c3d 45%,#090909 85%,#0a84ff 100%) !important;
+    -moz-box-ordinal-group: 2}
+#nav-bar {background: linear-gradient(0deg, #0a84ff 0%,#090909 15%,#3c3c3d 45%,#090909 85%,#0a84ff 100%) !important;
+    -moz-box-ordinal-group: 1}
+#PersonalToolbar {background: linear-gradient(0deg, #0a84ff 0%,#090909 15%,#2c2c2d 45%,#090909 85%,#0a84ff 100%) !important;
+    -moz-box-ordinal-group: 4;}
+#toolbar-menubar {background: linear-gradient(0deg, #0a84ff 0%,#090909 15%,#2c2c2d 45%,#090909 85%,#0a84ff 100%) !important;
+    -moz-box-ordinal-group:73;}
+#addonbar_v {background: linear-gradient(90deg, #000000 0%,#2c2c2d 10%,#030303 50%,#2c2c2d 90%,#000000 120%) !important;
+    -moz-box-ordinal-group: 8;}
+#addonbar {background: linear-gradient(0deg, #0a84ff 0%,#090909 15%,#3c3c3d 45%,#090909 85%,#0a84ff 100%) !important;
+    -moz-box-ordinal-group: 4}
+/********************************************************************/
+/********************        URL gigs       *************************/
+/********************************************************************/
+
+/*  This maxes out how long the tabbrowser-tab can be   */
+/*.tabbrowser-arrowscrollbox-scrollbox {
+    max-width: 700px !important;
+}
+*/
+
+#urlbar-container {
+    min-width: 440px !important;
+    max-width: 1000px !important;
+}
+
+
+#urlbar  {
+    background: transparent !important;
+    text-align: center !important;
+    font-family: hack !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    color: #0aeaff !important;  
+}
+
+#pageActionButton, #pocket-button, 
+#identity-box, .urlbar-history-dropmarker {display: none}
+.tabs-newtab-button {display: none}
+
+.search-one-offs {display: none}
+
+#reader-mode-button {display: none}
+#pageActionSeparator {display: none}
+
+#star-button {opacity: 0 !important;}
+
+/* hides lock inside url *//*
+#urlbar[pageproxystate="valid"]>#identity-box.verifiedDomain>#connection-icon,
+#urlbar[pageproxystate="valid"]>#identity-box.verifiedIdentity>#connection-icon,
+#urlbar[pageproxystate="valid"]>#identity-box.mixedActiveBlocked>#connection-icon {
+    display: none !important;
+}*/
+/*disable url stuff */
+#pageActionButton,
+#pocket-button-box,
+ar-button,
+.autocomplete-history-dropmarker,
+#identity-icon-labels {
+    display: none !important;
+}
+
+#identity-box {display: none !important;}
+
+/* box-shadow: none !important; */
+#urlbar-container {
+    margin-top: 0px !important;
+}
+
+/********************************************************************/
+/********************        navbars       *************************/
+/********************************************************************/
+
+/* Autohide Navbar */
+
+/* Auto-hide toolbar - aka the navbar*//*
+:root:not([customizing]) #nav-bar
+{
+  overflow-y: hidden;
+  min-height:0 !important;
+    max-height: 0 !important;
+  margin-top: -28px !important;
+  opacity: 0;
+}
+/*
+:root:not([customizing]) :hover > #nav-bar,*//*
+:root:not([customizing]) #nav-bar:focus-within {
+  max-height: 32px !important;;
+  opacity: 1;
+    margin-top: -32px !important;
+  transition: opacity 0s ease-in, max-height 0.1s linear;
+}
+*/
+
+
+#TabsToolbar-customization-target {
+    min-height: 30px !important;
+    max-height: 30px !important;
+    margin-bottom: -1px; 
+}
+
+
+
+#pagetitle-bar {
+    color: #ffff79;
+    font-family: hurmit nerd font;
+    font-weight: bold;/*
+    font-style: italic;*/
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/***************************************************************/
+/********************************************//*
+#browser-bottombox {
+    margin-bottom: 0px     /*   this makes sure the page content isnt cut off by addonbar enabled/disabled  *//*
+}
+#addonbar {
+    margin-top: 0px
+}
+/********************************************/
+/***************************************************************/
+
+/*********************************************************************/
+/****************        Misc Toolbar Edits       *******************/
+/********************************************************************/
+
+#PlacesToolbar .bookmark-item:hover {
+    border-radius: 0px !important; /*round or sharpr edges*/
+    background-color: transparent !important;}
+
+#navigator-toolbox::after {border-bottom: 0px !important;}
+#nav-bar {box-shadow: none !important;}
+
+.toolbarbutton-1:hover {background: none !important;}
+
+.titlebar-spacer, .titlebar-buttonbox {display: none !important;}
+/*#titlebar-max, #titlebar-min, #titlebar-close {display: none}
+.titlebar-placeholder {display: none}*//*
+.titlebar-buttonbox-container {display: none !important}*/
+
+
+#home-button,  #reload-button {display: none}
+#back-button, #forward-button {display: none}
+#alltabs-button {display: none}
+#star-button {fill: #2c2c2d !important;}
+#star-button:not([starred]) /* bookmark star if not bookmarked */ {
+    display: none !important;
+}
+
+.scrollbutton-down {display: none}
+
+#movable-overflow-button {
+    list-style-image: url("Firefox.png") !important;
+    transform: scale(1.4) !important;
+}
+
+/********************************************************************/
+/********************        Menu Mods       ************************/
+/********************************************************************/
+
+/*  Hamburger & Overflow Icons  */
+#PanelUI-menu-button {list-style-image: url("firefoo.png") !important;}
+
+/*  This is the id above PanelUI-menu-button    */
+#PanelUI-button {
+    -moz-box-ordinal-group: 0 !important;
+}
+
+/*  making hamburger menu icon larger - attempt to apply this to the rest of the toolbar icons    */
+#PanelUI-menu-button > .toolbarbutton-badge-stack {
+    padding: 1px !important;
+}
+
+#PanelUI-menu-button > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+    width: 23px !important;
+    height: 23px !important;
+}
+
+
+
+/**************************************************/
+/*********      Tab-related Removals    **********/
+/**************************************************/
+#TabsToolbar .close-icon, .tab-line, .tab-close-button, .tab-label-container,
+.tab-loading-burst, .tab-label {display: none}
+.tabbrowser-tab:after, .tabbrowser-tab:before {display: none !important;}
+.tabbrowser-tab[fadein] {
+    max-width: 30px !important;
+    min-width: 30px !important;}
+/*  centers tab icon image  */
+.tab-icon-image {margin-inline-end: 0px !important;
+/*    transform: scale(1,1.02)*/}
+/*.tab-content {padding: 6px !important;}*/
+
+/*  coloring active, inactive, hover tab etc    */
+.tab-icon-image {filter: grayscale(0%) !important;}
+.tabbrowser-tab[selected] .tab-icon-image {filter: none !important;}
+.tabbrowser-tab [selected] {background: none !important;}
+.tabbrowser-tab:hover:not([selected]) .tab-icon-image {
+    filter: none !important;
+    opacity: 1 !important;
+}
+
+#tabbrowser-ta0bs[overflow] .scrollbutton-down {display: none}
+#tabbrowser-tabs[overflow] .scrollbutton-up {
+    visibility: hidden !important;
+}
+
+/* show favicon for tabs without favicons */
+
+/*DISABLE WHITE FLASH OF DEATH*/
+#browser vbox#appcontent tabbrowser,
+#content,
+#tabbrowser-tabpanels,
+browser[type=content-primary],
+browser[type=content]>html {
+    background: #101010 !important
+}
+
+
+
+/***    
+Default Favicon for Tabs 
+Without a Favicon
+***/
+.tabbrowser-tab:not([pinned]) .tab-icon-image:not([src]) {
+    display: inline !important;
+}
+
+#main-window .tabbrowser-tab[pinned] .tab-icon-image:not([src]),
+#main-window .tabbrowser-tab:not([pinned]) .tab-icon-image:not([src]) {
+    list-style-image: url("firefox_Dark.png") !important;
+}
+
+.tabbrowser-tab:not([pinned])[busy] .tab-icon-image {
+    display: none !important;
+}
+/***
+***/
+
+
+
+/******************************************
+        Sidebar Mods
+******************************************/
+#sidebar-header, #sidebar-throbber,
+#sidebar-splitter, #viewButton {
+    display: none
+}
+.sidebar-placesTreechildren {
+    background: linear-gradient(45deg, #111 0%,#0c0c0d 4%, #0a84ff 11%, #2c2c2d 13%, #000 85%, #0a84ff 89%, #090909 93%, #000 1000%) !important;
+}
+#sidebar-search-container {
+    background: linear-gradient(5deg, #111 0%,#0c0c0d 4%, #000 13%, #000 85%, #090909 93%, #000 1000%) !important;
+}
+#search-box {
+    border: none !important;
+    color: #ffaaff !important;    
+}
+
+/****************************************************************/
+                   /*  Statuspanel Mods    */
+/****************************************************************/
+/* If you use a theme where urlbar is partially transparent you should edit this color to something that closely matches the perceived color of urlbar. Or perhaps use background-image - linear-gradient() can work well here. But keep the color or image opaque or otherwise you'll face an issue where urlbar text bleeds through */
+#statuspanel-inner{ background-color: transparent !important;}
+
+
+#statuspanel {
+    position: fixed !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    color: #ff8282 !important;
+    border: none !important;
+    bottom: 0px !important;
+    right: 0px !important;
+    max-width: 75% !important;
+    margin-bottom: 0px !important;
+    padding-top: 0px !important;
+    transition: none !important;
+}
+
+
+  #main-window:not([sizemode="fullscreen"]) #statuspanel[inactive] #statuspanel-inner::before {
+      background:transparent !important;
+      color: #ffff44 !important;
+      font-family: tuffy  !important;
+      font-size: 20px !important;
+      font-weight: bold  !important;
+      bottom: 0px !important;
+      right: -65px !important;
+      margin-bottom: 3px !important;
+      padding-bottom: 0px !important;
+      padding-top: 0px !important;
+      padding-left: 0px !important;
+      padding-right: 75px !important;
+      position: fixed !important;
+      content: "tortious" !important;
+  }
+
+
+#statuspanel[inactive] #statuspanel-label {
+      display: none !important;
+  }
+
+#statuspanel #statuspanel-inner {
+      background:transparent !important;
+      border: none !important;
+      margin-right: 0px !important;
+}
+  
+  
+#statuspanel #statuspanel-label {
+      background: /*linear-gradient(to bottom, #000000 0%,#1c1e23 50%,#000000 100%) !important; */
+    transparent !important;
+      border: none !important;
+    text-align: center !important;
+      color: #ff7171 !important;
+      font-weight: bolder;
+    font-style:  oblique !important;
+      font-family: tallys;
+    font-size: 16px;
+      padding-top: 0px !important;
+      margin-bottom: 0px !important;
+    
+}
+
+
+
+
+/****************************************************************/
+                /*  Bookmark Toolbar Mods   */
+/****************************************************************/
+/* Hides bookmark text for all bookmarks displayed in a toolbar */
+#PlacesToolbar .bookmark-item > .toolbarbutton-text  {
+    display: none !important;
+}
+
+/* Small visual tweak so it looks exactly the same as if the bookmark really had no text */
+#PlacesToolbar .bookmark-item > .toolbarbutton-icon  {
+    margin-inline-end: 0px !important;
+} 
+
+#PlacesChevron .toolbarbutton-icon {
+  min-width: 0px !important;
+  min-height: 0px !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+
+
+/* This changes all treechildren elements highlights (list-like elements) */
+#bookmarks-view treechildren, #historyTree treechildren {color: #0a84ff}
+treechildren::-moz-tree-row(hover) {
+  background: var(--Lists-treechildren-hover-bg) !important;
+border: var(--Lists-treechildren-hover-border) !important}
+
+treechildren::-moz-tree-row(selected){
+  background: var(--Lists-treechildren-selected-bg) !important;
+border: var(--Lists-treechildren-selected-border) !important}
+
+/****************************************************************
+                  Bookmark Toolbar Icons    
+****************************************************************//*
+
+/*  Custom toolbar icon for XDM Addon   */
+toolbarbutton#browser-mon_xdman_sourceforge_net-browser-action {
+    list-style-image: url("AntiVir.png") !important;
+    transform: scale(1.9,1.9)
+}
+
+/*  Custom Bookmark Folder Icon re Toolbarbutton    */
+.bookmark-item[container][label="Programming"] {
+    list-style-image: url("Folder_yellow.png") !important;
+    transform: scale(1.6)
+}
+.bookmark-item[container][label="Resources"] {
+    list-style-image: url("Folder_yellow.png") !important;
+    transform: scale(1.6)
+}
+.bookmark-item[container][label="KDE"] {
+    list-style-image: url("Folder_green.png") !important;
+    transform: scale(1.6)
+}
+.bookmark-item[container][label="Zsh"] {
+    list-style-image: url("Folder.png") !important;
+    transform: scale(1.6)
+}
+.bookmark-item[container][label="Github"] {
+    list-style-image: url("Folder_red.png") !important;
+    transform: scale(1.6)
+}
+.bookmark-item[container][label="Misc"] {
+    list-style-image: url("Folder_darkblue.png") !important;
+    transform: scale(1.6)
+}
+.bookmark-item[container][label="Directories"] {
+    list-style-image: url("Folder_yellow.png") !important;
+    transform: scale(1.6)
+}
+
+
+
+
+
+
+/****************************************************************/
+/*************      Overflow Custom Display      ****************/
+/****************************************************************/
+
+/*  Icons-only Overflow Menu    */
+/* Customize rows and columns for number and size of rows/cols you want */
+#widget-overflow-fixed-list {
+    display: grid;
+    grid-template-rows: 35px 35px; /* two rows, the second one taller */
+    grid-template-columns: 35px 35px 35px 35px 35px 35px 35px [col-end]; /* seven columns, with an anchorpoint at the end */
+}
+
+/* Hides labels */
+#widget-overflow-fixed-list .toolbarbutton-1 > .toolbarbutton-text {
+    display: none !important;
+}
+
+/* Constrains width */
+#widget-overflow-mainView {
+    max-width: 300px !important;
+    min-width: 300px !important;
+}
+
+/* Hides "Customize Toolbar..." button */
+#overflowMenu-customize-button {
+    display: none !important;
+}
+
+/* Adjusts spacing */
+#widget-overflow-fixed-list .toolbarbutton-1 {
+    margin-top: -5px !important;
+    margin-bottom: -5px !important;
+}
+#widget-overflow-fixed-list {
+    margin-top: -10px !important;
+}
+
+
+/****************************************************************/
+/*************      Floating Findbar on Top      ****************/
+/****************************************************************/
+
+findbar{
+  -moz-box-ordinal-group: 0;
+  margin-bottom: calc(0px - 2 * var(--toolbarbutton-inner-padding) -  25px);
+  position: relative;
+  border-top: none !important;
+  transition: transform 82ms linear, opacity 82ms linear 32ms !important;
+  background: none !important;
+  pointer-events: none;
+}
+
+.findbar-container > .findbar-find-fast{
+  padding: var(--toolbarbutton-inner-padding) 1px;
+  margin: 0 !important;
+}
+
+findbar[hidden]{ transform: translateY(-30px);}
+
+findbar > .findbar-container,
+findbar > .close-icon{
+  border: 1px solid var(--chrome-content-separator-color);
+  border-width: 0 0 1px 0px;
+  background: var(--uc-light-bkgnd-color,var(--toolbar-bgcolor)) !important;
+  pointer-events: auto;
+}
+findbar > .findbar-container{
+  -moz-box-direction: reverse;
+  border-left-width: 1px;
+}
+
+findbar > .findbar-container > hbox{ margin: 0 5px }
+
+findbar::before{
+  content:"";
+  display: -moz-box;
+  -moz-box-flex: 100;
+}
+
+/*
+Move findbar so it isn't over the scrollbar
+Delete if you want findbar to begin from right window edge
+*/
+findbar{
+  margin-right: 16px;
+  border-right: 1px solid var(--chrome-content-separator-color);
+}
+
+/*****************************************************/
+/*  Removal of stuff    */ 
+/********************************************************/
+
+/*  This removes the stuff normally in the menubar  */
+#file-menu, #edit-menu, #view-menu, #history-menu,
+#bookmarksMenu, #tools-menu, #moreTools-menu, #helpMenu {
+    visibility: collapse
+}
+
+/*  Inside the right-click context menu */
+/*
+ * Cleaner Context Menu
+ */
+/* page menu */
+#context-openlink,    /* in new window */
+#context-bookmarklink,
+#context-savelinktopocket,
+#context-pocket,
+#context-sendimage,
+#context-setDesktopBackground,
+
+/* tab menu */
+#context_toggleMuteTab,
+#context_moveTabOptions,
+#context_undoCloseTab { 
+  display: none !important; 
+}
+
+/* 
+ * Cleaner Bookmark menu 
+ */
+#BMB_bookmarksShowAllTop, 
+#BMB_bookmarksShowAllTop+menuseparator,
+#BMB_viewBookmarksSidebar,
+#BMB_bookmarksToolbar,
+/* #BMB_unsortedBookmarks, */
+/* #BMB_bookmarksShowAll,  */
+#BMB_mobileBookmarks+menuseparator {
+  display: none !important;
+}
+
+/*******************************************/
+/*************  Removal of Shit ************/
+/****************************Misc Removal of Shit   */
+/* remove other stuff */
+
+#appMenu-popup vbox {
+    margin-left: -4px !important;
+    margin-top: 4px !important;
+}
+
+#appMenu-popup label {color: #2fd281}
+#appMenu-popup vbox {color: #0a84ff !important;}
+#appMenu-popup toolbarseparator {display: none}
+
+#appMenu-mainView {
+    background: linear-gradient(65deg, #010101 0%,#1b1b1b 30%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#1b1b1b 70%,#010101 100%) !important;
+}
+#PanelUI-developer {
+    background: linear-gradient(65deg, #010101 0%,#1b1b1b 30%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#1b1b1b 70%,#010101 100%) !important;}
+#PanelUI-developer #PanelUI-developerItems menuseparator {background: #0a84ff;}
+#PanelUI-developer .panel-header {display: none !important;}
+#PanelUI-helpItems, .panel-header {background: linear-gradient(65deg, #010101 0%,#1b1b1b 30%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#1b1b1b 70%,#010101 100%) !important;}
+#PanelUI-helpView .panel-header {display: none !important;}
+#appMenu-libraryView {background: linear-gradient(65deg, #010101 0%,#1b1b1b 30%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#1b1b1b 70%,#010101 100%) !important;}
+#appMenu-libraryView .panel-header {display: none !important;}
+#appMenu-library-pocket-button {display: none !important;}
+#PanelUI-bookmarks.PanelUI-subView vbox.panel-subview-body, #PanelUI-history.PanelUI-subView vbox.panel-subview-body, #PanelUI-downloads.PanelUI-subView vbox.panel-subview-body 
+{
+    background: linear-gradient(65deg, #010101 0%,#1b1b1b 30%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#1b1b1b 70%,#010101 100%) !important;
+}
+
+
+
+
+#appMenu-fxa-container,
+#appMenu-zoom-controls,
+#appMenu-fxa-label,
+#appMenu-edit-controls,
+#appMenu-print-button,
+#appMenu-more-button,
+#appMenu-new-window-button,
+#appMenu-private-window-button,
+#appMenuRestoreLastSession,
+#appMenu-open-file-button,
+#appMenu-save-file-button,
+#appMenu-find-button {
+    display: none;
+}
+
+/* remove stuff from the context/right-click menu*/
+
+#context-navigation,
+#context-viewinfo,
+#context-viewsource,
+#context-sendpagetodevice,
+#context-pocket,
+#context-savepage,
+#context-sep-navigation,
+#context-sep-sendpagetodevice,
+#context-sep-viewbgimage,
+#context-sep-viewsource,
+#inspect-separator {
+    display: none !important
+}
+
+/* New Tab Flash */
+
+/* .browserContainer { background-color: #323234 !important; } */
+
+#browser vbox#appcontent tabbrowser, #content, #tabbrowser-tabpanels, 
+browser[type=content-primary],browser[type=content] > html 
+{ background: #323234 !important }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************************************************************/
+/*
+:root:not([customizing]) #nav-bar toolbarbutton
+ {
+    margin-left: 0px !important;
+    opacity: 0 !important;
+    transform: scale(1,1) !important;
+    pointer-events: none !important;
+    transition: all 100ms var(--animation-easing-function) !important;
+}
+
+:root:not([customizing]) :hover > #nav-bar toolbarbutton,
+:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar toolbarbutton,
+:root:not([customizing]) :hover > #titlebar toolbarbutton {
+    transform: scale(1,1) !important;
+opacity:1 !important;
+margin-left:0 !important;
+pointer-events: auto !important;
+}
+*/
