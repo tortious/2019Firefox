@@ -10,6 +10,10 @@
 // For Firefox 72 onward, see the autoconfig alternative to this:
 // https://support.mozilla.org/questions/1251199#answer-1199709
 
+// Open NewTab_custom-page.uc.js in a text editor like Notepad and 
+// replace the placeholder link with the actual one you want to open in each new tab. 
+// Save and close the file when finished.
+
 (function() {
 
   // IMPORTANT: when there's no filename, be sure to include a trailing slash at the end.
