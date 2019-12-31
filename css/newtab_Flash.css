@@ -1,0 +1,14 @@
+/* New Tab Flash */
+:root{--newtab-textbox-background-color:#2E3440;}
+
+#browser vbox#appcontent tabbrowser,
+#content, 
+#tabbrowser-tabpanels,
+browser[type=content-primary],
+browser[type=content] > html{
+    background: #2E3440 !important
+}
+
+.tab-line {
+display : none !important;
+}
