@@ -16,3 +16,6 @@
 
 - [My Frozenfox Repo](https://github.com/tortious/FrozenFox)
 
+## Misc about:config Changes I Have Made
+
+- devtools.debugger.prompt-connection = False (removes box requiring you to accept remote debugging when accessing browser toolbox)
