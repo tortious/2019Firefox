@@ -1,0 +1,40 @@
+:root {
+  --sidebar-min-width: 33px;
+  --sidebar-visible-width: 300px;
+}
+
+#sidebar-header {
+  overflow: hidden !important;
+}
+
+#tabbrowser-tabs {
+  visibility: collapse !important;
+}
+
+#sidebar-box #sidebar-header {
+  display: none !important;
+}
+
+#sidebar,
+#sidebar-header {
+  position: relative !important;
+  min-width: var(--sidebar-min-width) !important;
+  max-width: var(--sidebar-min-width) !important;
+transition: .2s ease .25s;
+  z-index:1;
+}
+
+#sidebar-box:hover :-moz-any(#sidebar,#sidebar-header) {
+  background-color: var(--toolbar-bgcolor) !important;
+  min-width: var(--sidebar-visible-width) !important;
+  max-width: var(--sidebar-visible-width) !important;
+  margin-right: calc((var(--sidebar-visible-width) - var(--sidebar-min-width)) * -1) !important;
+  z-index:1;
+  position: relative !important;
+transition: .2s ease .25s;
+
+}
+
+#TabsToolbar > .toolbar-items,
+#TabsToolbar > .titlebar-spacer{ visibility: hidden }
+#nav-bar{ margin-top: -32px; margin-right: 20px; padding: 0px 150px 0px 0px !important; }
