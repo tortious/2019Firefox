@@ -1,0 +1,68 @@
+/*
+ * Auto-hide the URL-bar and bookmarks bar, show on hover or focus
+ */
+
+:root[uidensity=compact] #navigator-toolbox {
+  --nav-bar-height: 33px;
+  --bookmark-bar-height: 23px;
+  --navbar-transition-time: 0.1s;
+}
+
+:root:not([uidensity]) #navigator-toolbox {
+  --nav-bar-height: 39px;
+  --bookmark-bar-height: 23px;
+  --navbar-transition-time: 0.1s;
+}
+
+:root[uidensity=touch] #navigator-toolbox {
+  --nav-bar-height: 41px;
+  --bookmark-bar-height: 25px;
+  --navbar-transition-time: 0.1s;
+}
+
+:root:not([customizing]) #nav-bar, #PersonalToolbar {
+  z-index: 1;
+  display: flex !important;
+  position: fixed !important;
+  min-height: 0 !important;
+  height: 0 !important;
+  width: 100%;
+  opacity: 0;
+  transition: opacity var(--navbar-transition-time) ease-in, height var(--navbar-transition-time) linear !important;
+  pointer-events: none;
+}
+
+:root:not([customizing]) #nav-bar
+{
+  transition-delay: var(--navbar-transition-time) !important;
+  z-index: 10;
+}
+
+:root:not([customizing]) #navigator-toolbox:hover #nav-bar,
+:root:not([customizing]) #navigator-toolbox:focus-within #nav-bar {
+  transition-delay: 0s !important;
+  height: var(--nav-bar-height) !important;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* If the bookmarks bar is turned on, auto-hide that too */
+:root:not([customizing]) #PersonalToolbar {
+  margin-top: var(--nav-bar-height) !important;
+}
+
+:root:not([customizing]) #navigator-toolbox:hover #PersonalToolbar,
+:root:not([customizing]) #navigator-toolbox:focus-within #PersonalToolbar {
+  transition-delay: var(--navbar-transition-time) !important;
+  height: var(--bookmark-bar-height) !important;
+  opacity: 1;
+  pointer-events: all;
+}
+
+:root:not([customizing]) #nav-bar #nav-bar-customization-target {
+  flex-grow: 1;
+}
+
+:root:not([customizing]) #PanelUI-button {
+  align-self: center;
+}
