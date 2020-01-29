@@ -1,0 +1,577 @@
+/* DO NOT DELETE THIS LINE */
+
+/* This enables the use of JS external files */
+hbox#fullscr-toggler {
+    -moz-binding: url("userChrome.xml#js")} 
+/*********************************************************************************/
+@import 'floating-findbar.css';
+@import 'sidebar-stuff.css';
+@import 'coloring-n-removals';
+@import 'custom-toolbarbuttons';
+/*********************************************************************************/
+/*********************************************************************************/
+
+
+
+.searchbar-search-button {display: none;}
+
+
+/********************************************************************/
+/********************        Grouping       *************************/
+/********************************************************************/
+#titlebar {-moz-box-ordinal-group: 0}
+#toolbar-menubar {-moz-box-ordinal-group: 2;}
+#TabsToolbar, #TabsToolbar-customization-target {-moz-box-ordinal-group: 1;}
+#nav-bar {-moz-box-ordinal-group: 2}
+#PersonalToolbar {-moz-box-ordinal-group: 3;}
+#addonbar {-moz-box-ordinal-group: 7;}
+
+#TabsToolbar, #TabsToolbar-customization-target, #nav-bar, 
+#nav-bar-customization-target, 
+#PersonalToolbar {
+  height: 31px;
+}
+
+
+
+
+/*  This makes it look more uniform when activating the bar via F1 & w the color scheme */
+#PersonalToolbar {margin-top: -2px}
+
+
+
+/*  This centers the urlbar text  */
+#urlbar:not([focused]) #urlbar-input, /* ID for Firefox 70 */
+#urlbar:not([focused]) .urlbar-input{ text-align: center !important;}
+
+
+#pagetitle-bar {
+  font-family: /*blackchancery*/ walkaway black;
+  font-weight: bold;
+  margin-top: 0px;
+  font-size: 16px;
+  min-width: 365px;
+}
+
+
+/********************************************************************/
+/**********************        Primary       ************************/
+/********************************************************************/
+/*#nav-bar {height: 29px}*/
+
+/*  Hidden navbar/urlbar unless focused */
+:root:not([customizing]) #urlbar {opacity: 0}
+:root:not([customizing]) #urlbar:focus-within {opacity: 1 !important;/*
+display: flex*/}
+
+:root:not([customizing]) #nav-bar
+{
+    min-height: 1px !important;
+    max-height: 1px !important;
+    margin-bottom: -1px !important;
+    z-index: -1 !important;
+}
+
+:root:not([customizing]) #nav-bar:focus-within {
+    min-height: 32px !important;
+    max-height: 32px !important;
+    margin-top: -32px !important;
+    z-index: 11 !important;
+}
+
+
+
+/********************************************************************/
+/***************        Menubar in Tabstoolbar       ****************/
+/********************************************************************/
+
+#toolbar-menubar:not([inactive]) ~ #TabsToolbar {
+  margin-top: -32px !important;
+}
+:root[sizemode="maximized"] #toolbar-menubar:not([inactive]) ~ #TabsToolbar {
+  margin-top: -32px !important;
+}
+#PlacesToolbarItems, #PlacesToolbar, #PlacesToolbarDropIndicatorHolder {
+    height: 32px !important;}
+#toolbar-menubar:focus {z-index: 22 !important;}
+#file-menu, #edit-menu, #view-menu, #history-menu, #bookmarksMenu, #tools-menu, #helpMenu {visibility: collapse}
+
+/********************************************************************/
+/********************        TabsToolbar       **********************/
+/********************************************************************/
+
+/* Hide the 2px highlight line above tabs. */
+#main-window:not([customizing]) .tab-line {
+  display: none !important;
+}
+
+/* Remove the 1px top border */
+#main-window:not([customizing]) .tab-background {
+  border-top: 0 !important;
+}
+
+/* Tab underline */
+#main-window:not([customizing]) .tab-background {
+  box-shadow: inset 0 -1px rgba(0, 0, 0, var(--tab-underline-opacity));
+}
+
+
+.tab-sound-icon {display: none}
+
+#TabsToolbar {-moz-window-dragging: no-drag !important;}
+
+#Tabbrowser-tabs .close-icon {display: none !important;}
+.tab-bottom-line {display: none !important;}
+.tab-loading-burst {display: none}
+.tab-line {color: green !important}
+.tab-label-container {display: none}
+#new-tab-button {display: none}
+#alltabs-button{display: none}
+toolbarbutton.scrollbutton-up {display: none}
+toolbarbutton.scrollbutton-down {display: none}
+
+/*  Center all inside tab   */
+.tab-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -1px;
+}
+/* Force tab favicon to the center */
+.tabbrowser-tab:not([class*="identity-color-"]) .tab-throbber, .tabbrowser-tab:not([class*="identity-color-"]) .tab-throbber-fallback {
+  margin-left: auto;}
+.tabbrowser-tab:not([busy]):not([class*="identity-color-"]) .tab-icon-image {
+  margin-left: auto;}
+
+/*  Increase size of tab icon   */
+.tab-icon-image {margin-inline-end: 0px !important;
+    transform: scale(1.1, 1);}
+
+/* Remove tab separators */
+.tabbrowser-tab:after, .tabbrowser-tab:before {display: none !important;}
+
+/*  Reduce size of tabs */
+.tabbrowser-tab[fadein] {
+    max-width: 36px !important;
+    min-width: 36px !important;
+}
+
+
+.tabbrowser-tab [selected] {background: none !important;}
+
+.tabbrowser-tab[selected] .tab-icon-image {display: -moz-box}
+
+/***    
+Default Favicon for Tabs 
+Without a Favicon
+***/
+.tabbrowser-tab:not([pinned]) .tab-icon-image:not([src]) {
+    display: inline !important;
+}
+
+#main-window .tabbrowser-tab[pinned] .tab-icon-image:not([src]),
+#main-window .tabbrowser-tab:not([pinned]) .tab-icon-image:not([src]) {
+    list-style-image: url("firefox_Dark.png") !important;
+}
+
+.tabbrowser-tab:not([pinned])[busy] .tab-icon-image {
+    display: none !important;
+}
+
+/* Make tab close buttons appear on tab hover, replacing the tab icon */
+/*.tabbrowser-tab .tab-close-button {
+    -moz-box-ordinal-group: 0 !important;
+    margin: 0px 0px 0px 0px !important;
+}
+ */
+.tabbrowser-tab .tab-close-button {
+  display: none !important;
+}
+ 
+.tabbrowser-tab:not([pinned="true"]):hover .tab-icon-image,
+.tabbrowser-tab:not([pinned="true"]):hover .tab-throbber {
+    transform: scale(1.3)
+}
+ 
+/*.tabbrowser-tab:not([pinned="true"]):hover .tab-close-button {
+    display: -moz-box !important;
+}*/
+
+
+/* Show pinned tabs on right side of normal tabs */
+/* This is stupid hack that barely works and might lead to some very unexpected behavior */
+
+.tabbrowser-arrowscrollbox > spacer,
+.scrollbutton-up[orient="horizontal"]~spacer{ display: none }
+
+.tabbrowser-arrowscrollbox > .arrowscrollbox-scrollbox,
+.scrollbutton-up[orient="horizontal"]~scrollbox{ -moz-box-direction: inherit; -moz-box-pack: end }
+
+.tabbrowser-arrowscrollbox > .arrowscrollbox-scrollbox::after,
+.scrollbutton-up[orient="horizontal"]~scrollbox::after{ display: -moz-box; content: ""; -moz-box-flex: 1; -moz-box-ordinal-group: 2 }
+
+#tabs-newtab-button{ -moz-box-ordinal-group: 2 }
+.tabbrowser-tab[pinned]{ -moz-box-ordinal-group: 3 }
+
+#tabbrowser-tabs[positionpinnedtabs]{ direction: rtl }
+#tabbrowser-tabs[positionpinnedtabs] > arrowscrollbox { -moz-box-direction: reverse }
+.tab-content{ direction: ltr }
+
+
+/* Grayscale tab favicons */
+
+	/* Favicon icon when mouse over to pinned inactive tab grayscale(15%) */
+
+		.tabbrowser-tab:hover .tab-icon-image[pinned] {
+		filter: grayscale(20%) !important;
+		}
+
+	/* Favicon icon on pinned inactive tab grayscale(35%) */
+
+		.tabbrowser-tab .tab-icon-image[pinned] {
+		filter: grayscale(15%) !important;
+		}
+
+	/* Favicon icon when mouse over over inactive tab grayscale(15%) */
+		.tabbrowser-tab:hover .tab-icon-image:not([selected=true]):not([pinned]) {
+		filter: grayscale(20%) !important;
+		}
+
+	/* Gray out the favicon icon on the inactive tab */
+		.tabbrowser-tab .tab-icon-image:not([selected=true]):not([pinned]) {
+		filter: grayscale(75%) !important;
+		}
+
+
+
+
+/********************************************************************/
+/*********************        urlbar       **************************/
+/********************************************************************/
+
+#urlbar ::-moz-selection,
+.searchbar-textbox ::-moz-selection {
+  background: var(--in-content-selected-text-background)!important;
+  color: /*#1dc7f3*/ #f084cd;
+}
+
+#urlbar:not([focused]) #urlbar-input { text-align: center !important; }
+
+#urlbar {
+    background: transparent !important;
+    color: #1dffbf  !important;
+    font-family: coolvetica !important;
+    font-size: 16px !important;
+    text-align: center !important;
+}
+
+.urlbarView-row:hover, .urlbarView-row[selected] {
+background-color: #9000d8 !important;
+}
+
+
+/*  removes padding space on left side of urlbar results  */
+.urlbarView-results {margin-left: -20px !important;}
+
+
+/*  remove urlbar shield icon   */
+#tracking-protection-icon-container {display: none !important}
+
+
+
+/*  center text - attempt dec 2019  */
+#urlbar #urlbar-input {
+text-align: center !important;
+}
+
+
+
+/* Remove " - Visit" or " - Search with" bar in the drop-down */
+#PopupAutoCompleteRichResult richlistitem:first-of-type[type*="heuristic"],
+#PopupAutoCompleteRichResult richlistitem:first-of-type[actiontype="searchengine"],
+#PopupAutoCompleteRichResult richlistitem:first-of-type[actiontype="visiturl"],
+#PopupAutoCompleteRichResult richlistitem:first-of-type[actiontype="keyword"],
+panel#urlbar-results #urlbarView-row-0 {
+    display:none !important;
+  }
+
+/* Hide line for searching sld.tld below "Visit" Line */
+  #PopupAutoCompleteRichResult richlistitem:first-of-type[actiontype="visiturl"] +
+  richlistitem[actiontype="searchengine"] {
+    display:none !important;
+  }
+/* Hide separator between title and URL */
+  #PopupAutoCompleteRichResult .autocomplete-richlistitem:not([actiontype="searchengine"]) .ac-separator,
+  .urlbarView-row:not([type="search"]) .urlbarView-title-separator {
+    display: none !important;
+  }
+/* Prevent excess indenting of icons in Photon */
+  #PopupAutoCompleteRichResult .autocomplete-richlistitem [anonid="type-icon-spacer"],
+  panel#urlbar-results .autocomplete-richlistitem [anonid="type-icon-spacer"] {
+    display: none !important;
+  }
+#identity-box .desktop-notification-icon {
+    display: none !important;
+}
+
+
+
+
+#pageActionButton, #pocket-button, 
+#identity-box, .urlbar-history-dropmarker {display: none}
+#star-button {opacity: 0 !important;}
+#tabs-newtab-button {display: none}
+#whats-new-menu-button {display: none}
+
+
+/* box-shadow: none !important; */
+#urlbar-container {
+    margin-top: 0px !important;
+}
+
+#urlbar-input::placeholder, #searchbar .textbox-input::placeholder {opacity: 0 !important;}
+
+/* Remove border from url bar*/
+#urlbar {
+  border-width: 0px !important;}
+/**
+ * Center address in urlbar and prevent it from shifting.
+ * Hide unnecessary elements to clean up UI.
+ */
+
+/* Hide "search with Google" placeholder text */
+#urlbar html|input#urlbar-input::placeholder {
+  opacity: 0 !important;
+}
+/* Keep consistent margin across all URL states. Needed to ensure constant width of #identity-box */
+#identity-box {
+  margin-inline-end: 4px !important;
+  padding-inline-end: 8px !important;}
+
+
+#urlbar-results .urlbarView-row {
+  position: relative !important;
+}
+#urlbar-results .urlbarView-row .urlbarView-title {
+  position: absolute !important;
+  display: block !important;
+  right: 10px !important;
+  top: 4px !important;
+}
+#urlbar-results .urlbarView-row .urlbarView-url {
+  position: inherit !important;
+  display:block !important;
+  left: 10px !important;
+  top: 4px !important;
+}
+
+
+/* Page action buttons always occupy their space */
+#urlbar[pageproxystate="invalid"] > #page-action-buttons > #pageActionButton,
+#urlbar[pageproxystate="invalid"] > #page-action-buttons > #star-button-box {
+  -moz-box-ordinal-group: 0;
+  display: -moz-box !important;
+  visibility: hidden !important;
+  pointer-events: none;
+}
+
+/* Minimize some spacing */
+#pageActionSeparator {
+  visibility: collapse !important;
+}
+
+/* #page-action-buttons > :not([hidden]) ~ #pageActionSeparator {
+  visibility: visible !important;
+  margin: 0 4px !important;
+} */
+
+
+/* Don't show "Switch to tab" text */
+#urlbar-display-box {
+  display: none !important;
+}
+
+
+
+
+/********************************************************************/
+/*******************        Statuspanel       ***********************/
+/********************************************************************/
+/* If you use a theme where urlbar is partially transparent you should edit this color to something that closely matches the perceived color of urlbar. Or perhaps use background-image - linear-gradient() can work well here. But keep the color or image opaque or otherwise you'll face an issue where urlbar text bleeds through */
+#statuspanel-inner{ background-color: transparent !important;}
+
+
+#statuspanel {
+    position: fixed !important;
+    opacity: 1 !important;
+    background: transparent !important;
+    color: #fdff85 !important;
+    border: none !important;
+    bottom: 0px !important;
+    right: 0px !important;
+    max-width: 28% !important;
+    margin-bottom: 0px !important;
+    padding-top: 0px !important;
+    transition: none !important;
+}
+
+#main-window:not([sizemode="fullscreen"]) #statuspanel[inactive] #statuspanel-inner::before {
+      background:transparent !important;
+      color: #0fe0fe !important;
+      font-family: tuffy  !important;
+      font-size: 20px !important;
+      font-weight: bold  !important;
+      bottom: 0px !important;
+      right: -65px !important;
+      margin-bottom: 3px !important;
+      padding-bottom: 0px !important;
+      padding-top: 0px !important;
+      padding-left: 0px !important;
+      padding-right: 75px !important;
+      position: fixed !important;
+      content: "tortious" !important;
+  }
+
+#statuspanel[inactive] #statuspanel-label {
+      display: none !important;
+  }
+
+#statuspanel #statuspanel-inner {
+      background:transparent !important;
+      border: none !important;
+      margin-right: 0px !important;
+}
+  
+  
+#statuspanel #statuspanel-label {
+      background: /*linear-gradient(to bottom, #000000 0%,#1c1e23 50%,#000000 100%) !important; */
+    transparent !important;
+      border: none !important;
+    text-align: center !important;
+      color: #ff6efa !important;
+      font-weight: bolder;
+    font-style:  oblique !important;
+      font-family: tallys;
+    font-size: 16px;
+      padding-top: 0px !important;
+      margin-bottom: 0px !important;
+    
+}
+
+
+
+
+
+
+
+/********************************************************************/
+/*****************        [insert topic]       **********************/
+/********************************************************************/
+/*  This puts tabs on bottom and MUST be done up here   *//*
+#TabsToolbar, #TabsToolbar-customization-target {
+    position: fixed !important;
+    bottom: 0px !important;
+    display: flex !important;
+    width: 100% !important;
+    height: 30px !important;
+}
+#tabbrowser-tabs {width: 70%}
+#browser-bottombox {margin-bottom: 30px}
+*/
+/********************/
+/*  code for one-liner w/ tabstoolbar on left   */
+/*:root:not([customizing]) #TabsToolbar {
+    margin-top: -30px !important;
+  margin-right: 30vw !important;
+}
+:root:not([customizing]) #nav-bar {             /* One-liner*/     /*
+  margin-top: 0px;
+  margin-left: 70vw !important; 
+  border-top: none !important;
+} 
+/********************/
+
+
+
+
+
+/********************/
+
+
+
+
+
+
+/********************/
+/*  something called symbolic tab icons; have not tried yet */
+
+/* Icons light/dark fix coloring hack filters *//*
+:root {
+	--sweet-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%) invert(100%);
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--sweet-convert-icon-to-symbolic-hack-filter: invert(100%) sepia(100%) grayscale(100%) brightness(200%) brightness(85%);
+	}
+}
+
+/* Make tab icons look kinda like symbolic icons *//*
+tab .tab-icon-image {
+	filter: var(--sweet-convert-icon-to-symbolic-hack-filter);
+}
+*/
+
+
+
+
+
+/********************/
+
+/********************************************************************/
+/********************        Grouping       *************************/
+/********************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * Remove extra padding from tabs toolbar 
+ *//*
+ 
+.titlebar-spacer[type="pre-tabs"] {
+  width: 0 !important;
+}
+
+.titlebar-spacer[type="post-tabs"] {
+  width: 10px !important;
+}
+
+/**
+ * Remove tab overflow scroll buttons 
+ *//*
+.scrollbutton-up, .scrollbutton-down {
+  display: none;
+}
+*/
