@@ -1,0 +1,125 @@
+/* Firefox CSS stylesheet */
+
+/*Url bar*/
+
+	#urlbar, #urlbar-container, #urlbar-input {
+		background:none !important;
+		opacity: 0.9 !important;
+		text-align:  -moz-center !important;
+		}
+
+	#urlbar {border: none !important;}
+
+	#urlbar[focused] {box-shadow: initial !important;}
+
+  #nav-bar{padding: 0px 0px !important;}
+  #urlbar-container{padding: 0px 0px !important;}
+
+/* Tabs */
+
+/* Hide stuff */
+
+	#tracking-protection-icon-container{ display:none;}
+	#blocked-permissions-container{ display:none;}
+	#identity-box.verifiedDomain #identity-icon {display:none !important;}
+	#pageActionButton {display: none;}
+
+	.tabbrowser-tab::after,
+	.tabbrowser-tab::before {border-left: none !important;}
+
+/* Grayscale tab favicons */
+
+	/* Favicon icon when mouse over to pinned inactive tab grayscale(15%) */
+
+		.tabbrowser-tab:hover .tab-icon-image[pinned] {
+		filter: grayscale(15%) !important;
+		}
+
+	/* Favicon icon on pinned inactive tab grayscale(35%) */
+
+		.tabbrowser-tab .tab-icon-image[pinned] {
+		filter: grayscale(10%) !important;
+		}
+
+	/* Favicon icon when mouse over over inactive tab grayscale(15%) */
+		.tabbrowser-tab:hover .tab-icon-image:not([selected=true]):not([pinned]) {
+		filter: grayscale(15%) !important;
+		}
+
+	/* Gray out the favicon icon on the inactive tab */
+		.tabbrowser-tab .tab-icon-image:not([selected=true]):not([pinned]) {
+		filter: grayscale(75%) !important;
+		}
+
+/* Remove placeholder "Search With Text from URL */
+
+		#urlbar-input::placeholder,
+		#searchbar .textbox-input::placeholder {opacity: 0 !important;}
+
+/* Make the about page color darker */
+
+	#browser vbox#appcontent tabbrowser #content, #tabbrowser-tabpanels, browser[type=content-primary], browser[type=content] > html {
+		background: #282828 !important; background-color: #282828 !important; 	color: #282828 !important; }
+
+/* Edit the size of tab spacers */
+
+	.titlebar-spacer[type="pre-tabs"]{display:none; !important;}
+	.titlebar-spacer[type="pre-tabs"]{opacity:0 !important;}
+  .titlebar-spacer[type="post-tabs"]{display:none !important;}
+  hbox.titlebar-buttonbox-container:nth-child(4) > hbox:nth-child(1) {display:none !important;}
+	#navigator-toolbox { border: none !important;}
+
+
+/* Make tab select color black */
+
+        .tab-background[selected="true"]{background-color: black !important;}              /* this sets the color of the tab background */
+
+        .tab-line[selected="true"] {background-color : black !important;;}           /* this sets the color of the line above the tab */
+
+/* Hide the small x in tabs */
+
+        .tabbrowser-tab:not([pinned]):not([selected]) .tab-close-button {display: none !important;}
+        .tabbrowser-tab:not([pinned]):not([selected]):hover .tab-close-button {display: -moz-box !important;}
+
+
+
+/* Grayscale the Bookmarks, Bitwarden and Noscript icons */
+
+#_446900e4-71c2-419f-a6a7-df9c091e268b_-browser-action {filter: grayscale(75%) !important;}
+#_73a6fe31-595d-460b-a920-fcc0f8843232_-browser-action {filter: grayscale(75%) !important;}
+#page-action-buttons {filter: grayscale(40%) !important;}
+
+
+/* Center, spread and grayscale the bookmarks toolbar */
+
+#PlacesToolbarItems {
+
+	-moz-box-pack: center;
+}
+
+#PlacesToolbar {filter: grayscale(56%) !important;}
+
+#personal-bookmarks #PlacesToolbar #PlacesToolbarItems > box {
+    padding: 5px 0 !important;
+}
+
+#personal-bookmarks #PlacesToolbar toolbarbutton.bookmark-item {
+    margin: 0 1px !important;
+    padding: 2px 15px !important;
+}
+
+#personal-bookmarks #PlacesToolbar toolbarbutton.bookmark-item:first-child {
+    margin: 0 1px 0 0 !important;
+}
+
+#personal-bookmarks #PlacesToolbar toolbarseparator {
+    margin: 0 10px !important;
+    opacity: 0.25 !important;
+}
+
+/* Hide the url dropdown menu */
+
+#urlbar .urlbarView {
+
+	display: none !important;
+}
