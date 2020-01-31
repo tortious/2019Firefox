@@ -53,3 +53,21 @@
 - id: appMenu-help-button, class: subviewbutton subviewbutton-iconic subviewbutton-nav 
 
 - id: appMenu-quit-button, class: subviewbutton subviewbutton-iconic
+
+- #appMenu-fxa-label
+- #appMenu-protection-report-button,
+- #appMenu-tp-separator,
+- #appMenu-new-window-button,
+- #appMenu-private-window-button,
+- #appMenuRestoreLastSession,
+- #appMenu-zoom-controls,
+- #appMenu-edit-controls,
+- #appMenu-library-button,
+- #appMenu-logins-button,
+- #appMenu-customize-button,
+- #appMenu-open-file-button,
+- #appMenu-save-file-button,
+- #appMenu-find-button,
+- #appMenu-more-button,
+- #appMenu-developer-button,
+- #appMenu-whatsnew-button
