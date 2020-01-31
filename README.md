@@ -19,3 +19,37 @@
 ## Misc about:config Changes I Have Made
 
 - devtools.debugger.prompt-connection = False (removes box requiring you to accept remote debugging when accessing browser toolbox)
+
+
+## Misc Main Menu Ids & Classes
+
+- id: appMenu-addon-banners
+- class: panel-banner-item 
+- id: appMenu-fxa-status, class: sync-ui-item 
+- class: sync-ui-item 
+- id: appMenu-tp-separator
+- id: appMenu-new-window-button, class: subviewbutton subviewbutton-iconic 
+- id: appMenu-private-window-button, class: subviewbutton subviewbutton-iconic 
+- id: appMenuRestoreLastSession, class: subviewbutton subviewbutton-iconic 
+
+- id: appMenu-zoom-controls, class: toolbaritem-combined-buttons 
+
+- id: appMenu-edit-controls, class: toolbaritem-combined-buttons 
+
+- id: appMenu-library-button, class: subviewbutton subviewbutton-iconic subviewbutton-nav 
+- id: appMenu-logins-button, class: subviewbutton subviewbutton-iconic 
+- id: appMenu-addons-button, class: subviewbutton subviewbutton-iconic 
+- id: appMenu-preferences-button, class: subviewbutton subviewbutton-iconic 
+- id: appMenu-customize-button, class: subviewbutton subviewbutton-iconic 
+
+- id: appMenu-open-file-button, class: subviewbutton 
+- id: appMenu-save-file-button, class: subviewbutton 
+- id: appMenu-print-button, class: subviewbutton subviewbutton-iconic 
+
+- id: appMenu-find-button, class: subviewbutton subviewbutton-iconic 
+- id: appMenu-more-button, class: subviewbutton subviewbutton-nav 
+- id: appMenu-developer-button, class: subviewbutton subviewbutton-nav 
+- id: appMenu-whatsnew-button, class: subviewbutton subviewbutton-iconic subviewbutton-nav 
+- id: appMenu-help-button, class: subviewbutton subviewbutton-iconic subviewbutton-nav 
+
+- id: appMenu-quit-button, class: subviewbutton subviewbutton-iconic
