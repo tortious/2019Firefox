@@ -1,0 +1,14 @@
+/* Hide tabs unless cursor is on top of toolbar */
+
+@keyframes slidein{
+  from{ margin-top: calc(0px - var(--tab-min-height)) }
+  to{ margin-top: 0 }
+}
+@keyframes slideout{
+  from{ margin-top: var(--tab-min-height) }
+  to{ margin-top: 0 }
+}
+#navigator-toolbox:not(:hover) > #titlebar{ -moz-appearance: none !important }
+#navigator-toolbox:not(:hover)  #TabsToolbar:not([customizing]) { visibility: collapse }
+#navigator-toolbox:hover > #nav-bar:not([customizing]){ animation: slidein ease-out 48ms 1 }
+#navigator-toolbox:not(:hover) > #nav-bar:not([customizing]){ animation: slideout ease-out 48ms 1 }
