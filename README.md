@@ -4,6 +4,8 @@
 
 - [Repo](https://github.com/dotiful/firefox-scripts) with all kinds of great firefox scripts 
 
+- [Izheil's Baller Repo & Dark Theme](https://github.com/Izheil/Quantum-Nox-Firefox-Dark-Full-Theme)
+
 - [Mr.OtherGuy's Dope Script Repo](https://github.com/MrOtherGuy/firefox-csshacks)
 
 - [Firefox BLUEMOON Repo](https://github.com/GrosBourrin/FIREFOX-BLUE-MOON)
