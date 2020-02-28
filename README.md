@@ -22,7 +22,11 @@
 
 - devtools.debugger.prompt-connection = False (removes box requiring you to accept remote debugging when accessing browser toolbox)
 
-- browser.urlbar.update1 (stops urlbar from looking all wonky in FF71. Prob  will be extinct soon as it matures, as suggested by the homie MrOtherGuy somewhere on r/firefoxcss recently. 
+- browser.urlbar.update1 = False (stops urlbar from looking all wonky in FF71. Prob  will be extinct soon as it matures, as suggested by the homie MrOtherGuy somewhere on r/firefoxcss recently. 
+
+- browser.urlbar.formatting.enabled = False (stops the shading/highlighting styling in the urlbar)
+
+
 ## Misc Main Menu Ids & Classes
 
 - id: appMenu-addon-banners
