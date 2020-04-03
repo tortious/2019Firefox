@@ -26,6 +26,9 @@
 
 - browser.urlbar.formatting.enabled = False (stops the shading/highlighting styling in the urlbar)
 
+- xpinstall.signatures.required = false
+
+- extensions.experiments.enabled = true
 
 ## Misc Main Menu Ids & Classes
 
