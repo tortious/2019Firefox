@@ -1,0 +1,36 @@
+/* Make urlbar popup appear full size like it did before urlbar re-design */
+
+#urlbar-container,
+#urlbar{
+  position: static !important;
+  display: -moz-box !important;
+}
+#urlbar{
+  height: auto !important;
+  width: auto !important;
+  border: 1px solid white;
+  border-color:var(--lwt-toolbar-field-border-color, hsla(240,5%,5%,.25));
+  background-color: var(--lwt-toolbar-field-background-color, hsla(0,0%,100%,.8));
+  border-radius: var(--toolbarbutton-border-radius);
+}
+
+#urlbar[focused]{ border-color: var(--lwt-toolbar-field-border-focus, highlight) }
+
+.urlbarView{
+  position: absolute !important;
+  margin: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  border-width: 1px 0;
+  top: var(--urlbar-toolbar-height);
+  background-color: var(--lwt-toolbar-field-focus, inherit);
+  z-index: 4;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+
+#urlbar > #urlbar-input-container{ padding: 0px !important; width: auto !important; height: auto !important; }
+#urlbar > #urlbar-background{ display: none !important; }
+
+/* This may seem pretty weird, but it gets around an issue where the height of urlbar may suddenly change when one starts typing into it */
+/* If you are otherwise modifying the urlbar height then you might need to modify the height of this too */
+#urlbar > #urlbar-input-container::before{ content: ""; display: -moz-box; height: 24px; }
