@@ -1,0 +1,347 @@
+/*
+/u/llamasking's Firefox userChrome.css
+
+Based upon /u/el013/'s "Ultra Minimal One Line userChrome" but cleaned up a little bit and with lots of changes to make it significantly better.
+/r/FirefoxCSS thread: https://www.reddit.com/r/FirefoxCSS/comments/g0o4sg/ultra_minimal_one_line_userchrome_macos_firefox/
+
+I also moved the variables to the top so that this is easier to edit.
+===========================
+Original description:
+
+This is my very minimalistic One Line userChrome.
+
+Most of the code is heavily based on https://github.com/mut-ex/minimal-functional-fox and https://gist.github.com/Cl3m3nt1n4/6c678228ddefc543d005922fedfb004c
+Huge thanks to /u/Cl3m3nt1n4 and /u/_mutex_!
+
+The code is somewhat messy but I won't bother cleaning it as long as everything works. Colors are easily changed by editing variables near the bottom of the file.
+*/
+
+/* Variables */
+:root {
+	--color-bg: #1c1c1c;
+	--color-hover: #252525;
+	--color-selected: #333333;
+	--close-button-opacity-nonhover: 0.2;
+	--transition-speed: 0.3s;
+
+	/* Absurd variables used for testing */
+	/*
+	--color-bg: gray;
+	--color-hover: orangered;
+	--color-selected: mediumturquoise;
+	--close-button-opacity-nonhover: 0.5;
+	--transition-speed: 3s;
+	*/
+
+	--gap-between-tabs: 0px;
+	--tab-font-size: 8.5pt;
+	--tab-font-weight: 250;
+	--tab-font-selected-weight: 350;
+	--tab-height: 33px;
+
+	--urlbar-height: 33px;
+	--urlbar-text-size: 8pt;
+	--urlbar-text-weight: 325;
+
+	/* Firefox variables */
+	/* NOTE TO SELF: https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/theme */
+	--lwt-toolbar-field-color: #fefefa !important;
+	--lwt-toolbar-field-focus: var(--color-selected) !important;
+	--lwt-toolbar-field-border-color: #666 !important;
+	--lwt-toolbar-field-focus-background-color: var(--color-bg) !important;
+	--lwt-toolbar-field-background-color: var(--color-hover) !important;
+	--toolbar-field-focus-border-color: var(--color-hover) !important;
+	--in-content-page-background: var(--color-bg) !important;
+}
+
+/* Possible fix v2 for /u/levialegjobb's issue: https://www.reddit.com/r/FirefoxCSS/comments/g0o4sg/ultra_minimal_one_line_userchrome_macos_firefox/fnelkwg/ */
+#tabbrowser-tabs,
+scrollbox {
+	background: var(--color-bg) !important;
+}
+
+/* Menu Button: The somewhat important button that nobody thinks about */
+#PanelUI-button {
+	display: block !important;
+	position: fixed !important;
+	right: 0px !important;
+	padding-top: 2px !important;
+	border: none !important;
+}
+
+/* All Tabs Button: The one that you see if you want to murder your poor ram */
+#alltabs-button {
+	position: fixed !important;
+	left: -1px !important;
+	padding-right: 2px !important;
+}
+
+/* Navigation Bar Includes Everything to Left of Tabs */
+#nav-bar {
+	margin-top: -33px !important;
+	margin-right: 70vw !important;
+	height: 33px !important;
+	padding-top: 0px !important;
+	padding-left: 0px !important;
+}
+
+/* Overflow Button: The one where you hide the extensions */
+overflow-button {
+	padding-bottom: 2px !important;
+}
+
+/* Titlebar: The one where all the tabs go */
+#titlebar {
+	background-color: var(--color-bg) !important;
+}
+
+/* Removes a one pixel black line from the entire "navigator toolbox" (that's the entire top bar thing). */
+#navigator-toolbox {
+	border-bottom: none !important;
+}
+
+/* Urlbar: The one where the long computery bits go */
+#urlbar[breakout][breakout-extend] {
+	top: calc((var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2) !important;
+	left: 0 !important;
+	width: 100% !important;
+}
+
+#urlbar[breakout][breakout-extend]>#urlbar-input-container {
+	height: var(--urlbar-height) !important;
+	padding-block: 0px !important;
+	padding-inline: 0px !important;
+}
+
+#urlbar-container {
+	margin-top: 1px !important;
+	max-width: 950px !important;
+	min-width: 150px !important;
+}
+
+#urlbar #urlbar-background {
+	background-color: var(--color-bg) !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+input#urlbar-input {
+	caret-color: var(--lwt-toolbar-field-focus-color) !important;
+	font-family: var(--urlbar-text-font) !important;
+	font-size: var(--urlbar-text-size) !important;
+	font-weight: var(--urlbar-text-weight) !important;
+	padding-left: 10px !important;
+	width: 99999px !important;
+}
+
+/* Tracking Protectiong: The one that protects you from tracking */
+#tracking-protection-icon-container {
+	margin-left: -3px !important;
+	margin-right: -12px !important;
+	border: none !important;
+}
+
+/* Reload: The one for when you fuck up in inspect element */
+#reload-button {
+	margin-right: -7px !important;
+}
+
+/* Bookmark Bar: The one bar that doesn't need to exist */
+#PlacesToolbarItems {
+	margin-top: 1px !important;
+	-moz-box-pack: center;
+}
+
+/* New Tab: The one button I don't use anymore */
+#tabs-newtab-button {
+	padding: 1px 4px 0px 3px !important;
+}
+
+/* Tabs Toolbar: The one that's quite literally the whole fucking bar */
+#TabsToolbar {
+	margin-left: 30vw !important;
+	margin-right: 28px !important;
+}
+
+/* Make close and audio buttons partially visible unless hovered over */
+.tab-icon-sound,
+.tab-close-button {
+	opacity: var(--close-button-opacity-nonhover) !important;
+	transition: all var(--transition-speed) ease !important;
+	position: fixed;
+	right: 0;
+}
+
+.tab-close-button:hover,
+.tab-icon-sound:hover {
+	opacity: 1 !important;
+}
+
+/* Don't indent urls */
+.urlbarView.megabar .urlbarView-results[wrap] > .urlbarView-row[has-url] > .urlbarView-row-inner > .urlbarView-url {
+	padding-inline-start: revert !important;
+}
+
+/* Regular Browser Tabs */
+.tabbrowser-tab {
+	background-color: var(--color-bg) !important;
+	margin-inline-end: var(--gap-between-tabs) !important;
+	max-height: var(--tab-height) !important;
+	min-height: var(--tab-height) !important;
+	font-size: var(--tab-font-size) !important;
+	font-weight: var(--tab-font-weight) !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+/* Hovered Browser Tabs */
+.tabbrowser-tab:hover {
+	background-color: var(--color-hover) !important;
+	font-size: var(--tab-font-size) !important;
+	font-weight: var(--tab-font-weight) !important;
+}
+
+/* Selected Browser Tabs */
+.tabbrowser-tab[selected="true"],
+.tabbrowser-tab[multiselected],
+.tabbrowser-tab[visuallyselected="true"] {
+	background-color: var(--color-selected) !important;
+	font-size: var(--tab-font-size) !important;
+	font-weight: var(--tab-font-selected-weight) !important;
+}
+
+/* Pinned tabs */
+.tabbrowser-tab[pinned="true"] {
+	max-width: var(--tab-height) !important;
+	min-width: var(--tab-height) !important;
+}
+
+.tabbrowser-tab[pinned="true"] .tab-icon-image {
+	align-items: center !important;
+	display: inline-block !important;
+	min-height: var(--pinned-tab-favicon-dim) !important;
+	min-width: var(--pinned-tab-favicon-dim) !important;
+}
+
+.tabbrowser-tab[pinned="true"] .tab-label-container {
+	display: none !important;
+}
+
+/* Make the container text on the url bar smaller and not colored. Make zoom indicator smaller, too. */
+#userContext-icons,
+#urlbar-zoom-button {
+	scale: 80%;
+	margin: -1px !important;
+	--identity-tab-color: #ccc !important;
+	--identity-icon-color: #ccc !important;
+}
+
+/* Make the sidebar dark with bookmarks, history, and synced tabs */
+#sidebar-box,
+.sidebar-panel,
+#template-container.content-scrollable {
+	background: var(--color-bg) !important;
+}
+
+.sidebar-splitter {
+	width: 1px !important;
+	border: 0 !important;
+	background: var(--color-hover) !important;
+}
+
+#sidebar-switcher-target {
+	background: none !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+#sidebar-switcher-target:hover {
+	background: var(--color-selected) !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+/* Make extension overflow menu dark */
+#widget-overflow-mainView {
+	background: var(--color-bg) !important;
+}
+
+#overflowMenu-customize-button {
+	background: var(--color-hover) !important;
+}
+
+#widget-overflow-fixed-list .toolbarbutton-1:hover,
+#overflowMenu-customize-button:hover {
+	background: var(--color-selected) !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+/* Make the find bar nice and dark */
+findbar {
+	background: var(--color-bg) !important;
+	border-top-color: var(--color-hover) !important;
+}
+
+.findbar-button,
+.findbar-find-next,
+.findbar-find-previous {
+  outline: 0 !important;
+	transition: all var(--transition-speed) ease !important;
+}
+
+.findbar-button:hover {
+	background: var(--color-hover) !important;
+}
+
+.findbar-button[checked="true"] {
+	background: var(--color-selected) !important;
+}
+
+/* Changes "flash" when opening a new tab */
+#browser vbox#appcontent tabbrowser,
+#content,
+#tabbrowser-tabpanels,
+browser[type=content-primary],
+browser[type=content] > html {
+	background: var(--in-content-page-background) !important;
+}
+
+/* I don't know what this shit does but it looks important. */
+.browser-toolbar:not(.titlebar-color) {
+	background-color: var(--color-bg) !important;
+}
+
+/* Hide lots of shit:
+ * Back and Forward buttons,
+ * Bookmark button,
+ * Pocket button,
+ * HTTPS icon,
+ * Bookmark icon from autocompleted links,
+ * I don't actually know this one,
+ * I think this one shows your picture when logged into Sync,
+ * Some history button,
+ * Minimize, Maximize, and Close Buttons,
+ * Tab spacers,
+ * An annoying "tab background" that is just in the way,
+ * The colored line on top of a tab,
+ * The colored line when in a containered tab,
+ * The tab seperators on either side of a tab,
+ * Favicons.
+ */
+
+#back-button,
+#forward-button,
+#star-button,
+#pocket-button,
+#identity-box,
+.urlbarView-type-icon,
+.urlbar-history-dropmarker,
+.titlebar-buttonbox-container,
+.titlebar-buttonbox,
+.titlebar-spacer[type="pre-tabs"],
+.titlebar-spacer[type="post-tabs"],
+.tab-background,
+.tab-line,
+.tab-bottom-line,
+.tabbrowser-tab::before,
+.tabbrowser-tab::after,
+.tabbrowser-tab .tab-icon-image {
+	display: none !important;
+}
