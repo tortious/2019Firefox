@@ -1,0 +1,11 @@
+/*
+  STYLING FOR RAW GITHUB CONTENT PAGE
+  Ex: https://raw.githubusercontent.com/tkhquang/userChrome.css/master/userContent/raw-github-content.css
+*/
+
+@-moz-document url-prefix(https://raw.githubusercontent.com) {
+  html {
+    background: #38383d !important;
+    color: #b1b1b3 !important;
+  }
+}
