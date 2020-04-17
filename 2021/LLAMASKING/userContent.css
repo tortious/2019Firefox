@@ -1,0 +1,13 @@
+@-moz-document url-prefix(about:) {
+  :root {
+    --in-content-page-background: #1c1c1c !important;
+  }
+}
+
+@-moz-document url-prefix(about:home),
+url-prefix(about:newtab),
+url-prefix(about:blank) {
+    html {
+      background: var(--in-content-page-background) !important;
+    }
+}
