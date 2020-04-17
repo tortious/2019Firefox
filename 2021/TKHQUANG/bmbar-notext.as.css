@@ -1,0 +1,20 @@
+/* ONLY SHOWS TEXT FOR FOLDERS IN THE BOOKMARK BAR */
+
+/* Hide the text from items which are not menu folders */
+toolbarbutton.bookmark-item:not([type="menu"]) .toolbarbutton-text {
+  display: none !important;
+}
+
+/* Shift the text (name of the folders) slightly to the right */
+toolbarbutton.bookmark-item[type="menu"] .toolbarbutton-text {
+  margin-left: 4px !important;
+}
+
+#PlacesToolbarItems > .bookmark-item > .toolbarbutton-icon[label]:not([label=""]) {
+  margin-inline-end: 2px !important;
+  margin-left: 2px !important;
+}
+
+toolbarbutton.subviewbutton.subviewbutton-iconic .toolbarbutton-text {
+  display: -moz-box !important;
+}
