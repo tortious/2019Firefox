@@ -1,0 +1,45 @@
+/*
+  Some personal tweaks for my own use
+*/
+
+/* Custom values for the height and colors of toolbars */
+*|*:root:-moz-lwtheme {
+  --toolbar-bgcolor: #2a2a2e !important;
+}
+:root {
+  --toolbar-height: 40px;
+}
+:root[uidensity="compact"] {
+  --toolbar-height: 34px;
+}
+:root[uidensity="touch"] {
+  --toolbar-height: 44px;
+}
+
+/* Custom height for Bookmark Bar */
+#PersonalToolbar {
+  height: calc(var(--toolbar-height) - 5px) !important;
+}
+
+/*
+  Separators on my bookmark bar is barely visible
+  as its color match the backgound
+*/
+toolbarseparator {
+  filter: invert(0.5) !important;
+}
+
+/*
+  Github icon on my bookmark bar is barely visible
+  as its color match the backgound
+*/
+.toolbarbutton-icon[src^="page-icon:https://github.com/"] {
+  filter: invert(65%) !important;
+}
+
+/* Color for Identity Icon when the connection is secured */
+#identity-box[pageproxystate="valid"].verifiedDomain > #identity-icon,
+#identity-box[pageproxystate="valid"].verifiedIdentity > #identity-icon,
+#identity-box[pageproxystate="valid"].mixedActiveBlocked > #identity-icon {
+  color: #3ad31c;
+}
