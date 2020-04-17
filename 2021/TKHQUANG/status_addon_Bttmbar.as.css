@@ -1,0 +1,55 @@
+/*
+  CSS Styling for Firefox StatusBar:
+  https://github.com/Aris-t2/CustomJSforFx/blob/master/scripts/addonbar.uc.js
+*/
+
+:root {
+  --bottom-toolbar-text-color: 220, 220, 220; /* Color in decimal RGB */
+  --bottom-toolbar-background-color: 0, 0, 0; /* Color in decimal RGB */
+}
+
+#browser-bottombox {
+  background-color: unset !important;
+}
+
+#addonbar {
+  background-color: rgb(var(--bottom-toolbar-background-color)) !important;
+}
+
+#statuspanel #statuspanel-label,
+statuspanel .statuspanel-label {
+  -moz-appearance: none !important;
+  background-color: rgba(var(--bottom-toolbar-background-color), 0.8) !important;
+  color: rgb(var(--bottom-toolbar-text-color)) !important;
+  border: 1px solid rgba(var(--bottom-toolbar-text-color), 0.3) !important;
+}
+#main-window[sizemode="maximized"] .browserContainer > #statuspanel,
+#main-window[sizemode="maximized"] .browserContainer > statuspanel {
+  left: 0.4em !important;
+  bottom: 5px !important;
+  max-width: 50% !important; /* This is the max length of the status text on the toolbar */
+}
+#main-window[sizemode="maximized"] #statuspanel #statuspanel-label,
+#main-window[sizemode="maximized"] statuspanel .statuspanel-label {
+  background: transparent !important;
+  border: none !important;
+}
+#statuspanel[inactive],
+statuspanel[inactive] {
+  opacity: 1 !important;
+}
+#main-window[sizemode="maximized"] #statuspanel[inactive] #statuspanel-inner::before,
+#main-window[sizemode="maximized"] statuspanel[inactive] .statuspanel-inner::before {
+  content: "Done";
+  margin-left: 0.3em;
+  background-color: transparent;
+  color: rgb(var(--bottom-toolbar-text-color));
+}
+#statuspanel[inactive] #statuspanel-label,
+statuspanel[inactive] .statuspanel-label {
+  opacity: 0 !important;
+}
+#main-window[inFullscreen="true"] #statuspanel,
+#main-window[inFullscreen="true"] statuspanel {
+  display:none !important;
+}
