@@ -1,0 +1,36 @@
+/*
+  PUT RELOAD BUTTON INSIDE URLBAR
+  Prerequisite: Put reload button on the right of the urlbar
+*/
+
+:root {
+  --reload-icon-size: 28px;
+}
+:root[uidensity="compact"] {
+  --reload-icon-size: 24px;
+}
+:root[uidensity="touch"] {
+  --reload-icon-size: 30px;
+}
+
+#stop-reload-button .toolbarbutton-icon {
+  width: var(--reload-icon-size) !important;
+  height: var(--reload-icon-size) !important;
+
+  -moz-context-properties: fill, fill-opacity !important;
+  fill: currentColor !important;
+  fill-opacity: 0.6 !important;
+  padding: var(--urlbar-icon-padding) !important;
+  border-radius: 0px !important;
+}
+
+#page-action-buttons {
+  margin-right: calc(var(--reload-icon-size) + 2px) !important;
+}
+
+#stop-reload-button {
+  position: relative;
+  z-index: 3;
+  transform: translateX(calc((var(--reload-icon-size) + 8px) * -1));
+  margin-right: calc((var(--reload-icon-size) + 2px) * -1) !important;
+}
