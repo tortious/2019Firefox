@@ -1,0 +1,386 @@
+/* AGENT_SHEET */
+
+@import "./_defaultColors.css";
+@import "./_customColors.css";
+
+@import "./css/context_bfrsb_labels_without_icons.css";
+
+@import "./css/megabar_optimizations.css";
+@import "./css/ac_popup_megabar_compact_results.css";
+@import "./css/ac_popup_megabar_searchwith_and_visit_items_hidden.css";
+
+
+#main-window:not([customizing]) #nav-bar {
+    /* make it 1px to show the border */
+    max-height: 1px !important;
+    min-height: 1px !important;
+    margin-bottom: -2px !important;
+}
+
+* {
+    animation: none !important;
+    transition: none !important;
+}
+/* fix overflow menu */
+.panel-viewstack {
+    transition: transform 1ms !important;
+}
+
+/* fix urlbar autocomplete results list not collapsing ff67 */
+/*
+#PopupAutoCompleteRichResult[autocompleteinput="urlbar"] > richlistbox > richlistitem {
+    transition: min-height 100ms 0s, visibility 100ms 0s !important;
+}
+*/
+
+/* hide useless crap */
+/* navigation */
+#main-window:not([customizing]) #back-button[disabled],
+#main-window:not([customizing]) #forward-button[disabled],
+
+
+/* urlbar */
+#urlbar-go-button, /* go button */
+#tracking-protection-icon-container, /* tracking protection? */
+#identity-box, /* site security information */
+.urlbar-history-dropmarker, /* dropdown */
+#pageActionButton, /* three dots */
+#page-action-buttons > :not(#star-button-box), /* every button that isn't the star */
+#star-button:not([starred]), /* bookmark star if not bookmarked */
+#urlbar[focused] #star-button-box, /* bookmark star while focused */
+.urlbar-go-button, /* go button */
+
+/* tabs */
+.titlebar-spacer,
+#tabbrowser-tabs .tabbrowser-tab .tab-close-button /* close tab button */
+{
+    display: none !important
+}
+
+
+/* NAVIGATION */
+#nav-barcc {
+    box-shadow: 0 -1px 0 var(--uc-tab-border-color) !important;
+    border-color: var(--uc-tab-border-color) !important;
+    background: var(--uc-toolbar-background) !important;
+}
+#PersonalToolbar {
+    border-color: var(--uc-tab-border-color) !important;
+    box-shadow: none !important;
+    background: var(--uc-toolbar-background) !important;
+}
+#navigator-toolbox::after {
+    box-shadow: none !important;
+    border-color: var(--uc-tab-border-color) !important;
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+/* NAV-ICONS */
+#TabsToolbar #movable-PanelUI-button {
+    list-style-image: url("icons/menu.svg") !important;
+}
+#TabsToolbar #back-button {
+    list-style-image: url("icons/back.svg") !important;
+}
+#TabsToolbar #forward-button {
+    list-style-image: url("icons/forward.svg") !important;
+}
+#TabsToolbar #reload-button {
+    list-style-image: url("icons/reload.svg") !important;
+}
+#TabsToolbar #stop-button {
+    list-style-image: url("icons/stop.svg") !important;
+}
+#TabsToolbar #alltabs-button {
+    list-style-image: url("icons/arrow-dropdown-16.svg") !important;
+}
+#TabsToolbar .scrollbutton-up,
+#TabsToolbar .scrollbutton-down {
+    /* the arrows flip by themselves */
+    list-style-image: url("icons/arrow-left.svg") !important;
+}
+#TabsToolbar #tabs-newtab-button,
+#TabsToolbar #new-tab-button {
+    list-style-image: url("icons/new.svg") !important;
+}
+#TabsToolbar > .titlebar-buttonbox-container {
+    /*! margin-left: 20px !important; */
+}
+
+
+/* TABS */
+.tabbrowser-tab {
+    color: var(--uc-main-color) !important;
+    border-top: 1px solid var(--uc-tab-border-color) !important;
+}
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+    border-color: var(--uc-tab-border-color) !important;
+    opacity: 1 !important;
+}
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+    content: "" !important;
+    display: -moz-box !important;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+    margin-inline-start: 0px !important;
+}
+.tabbrowser-tab[last-visible-tab] {
+    border-inline-end: none !important;
+}
+.tab-background {
+    background-image: none !important;
+    background-color: var(--uc-inactive-tab-background) !important;
+}
+.tab-background[selected] {
+    background-color: var(--uc-toolbar-background) !important;
+}
+.tab-line {
+    display: none !important;
+}
+/* default favicon */
+.tabbrowser-tab:not([pendingicon]) .tab-icon-image:not([src]):not([busy]):not([crashed]):not([sharing]) {
+    display: block !important;
+    fill: #5a5b5c !important;
+    fill-opacity: 1 !important;
+}
+/* drag the window from the new tab button */
+#tabs-newtab-button {
+    /* enables events to pass through */
+    pointer-events: none !important;
+    /* enables dragging and resizing with double click */
+    -moz-window-dragging: drag !important;
+    /* the title bar can be used to open tabs with a middle click */
+    opacity: 0 !important;
+}
+#new-tab-button {
+    /* only allow dragging, disables left click but not middle click */
+    -moz-window-dragging: drag !important;
+    /* for some reason, you can't middle click behind this element */
+    /* the middle click action needs to be changed via userChrome.js */
+    opacity: 0 !important;
+}
+.arrowscrollbox-overflow-start-indicator,
+.arrowscrollbox-overflow-end-indicator {
+    border-color: var(--uc-tab-border-color) !important;
+    border-image: none !important;
+}
+
+/* thin tabs */
+#main-window[sizemode="normal"] #TabsToolbar-customization-target {
+    margin-top: -2px !important;
+}
+#TabsToolbar {
+    max-height: 32px !important;
+    min-height: 26px !important;
+    height: 27px !important;
+}
+.tabbrowser-tab {
+    max-height: 27px !important;
+    min-height: 26px !important;
+}
+.tab-content {
+    padding: 0 5px !important;
+}
+.tab-throbber, .tab-icon-pending, .tab-icon-image, .tab-sharing-icon-overlay, .tab-icon-sound, .tab-close-button {
+    margin-top: 0px !important;
+}
+#tabbrowser-tabs > .tabbrowser-arrowscrollbox {
+    min-height: 27px !important;
+    max-height: 27px !important;
+}
+/* thin icons */
+#TabsToolbar-customization-target .toolbarbutton-1 > .toolbarbutton-badge-stack {
+    padding: 0px !important;
+    border-radius: 0px !important;
+}
+#new-tab-button,
+#alltabs-button,
+#tabbrowser-tabs .scrollbutton-up,
+#tabbrowser-tabs .scrollbutton-down,
+#TabsToolbar .toolbarbutton-1 {
+    /*
+    --uc-padding-horz: 3px;
+    --uc-padding-vert: 5px;
+    --uc-icon-size: 18px;
+    */
+    --uc-padding-horz: 2px;
+    --uc-padding-vert: 3px;
+    --uc-icon-size: 20px;
+    padding: 0px !important;
+    min-height: calc(var(--uc-icon-size) + var(--uc-padding-vert) * 2) !important;
+    max-height: var(--uc-icon-size) !important;
+}
+#new-tab-button .toolbarbutton-icon,
+#alltabs-button .toolbarbutton-icon,
+#tabbrowser-tabs .scrollbutton-up .toolbarbutton-icon,
+#tabbrowser-tabs .scrollbutton-down .toolbarbutton-icon,
+#TabsToolbar .toolbarbutton-1 .toolbarbutton-icon {
+    width: calc(var(--uc-icon-size) + var(--uc-padding-horz) * 2) !important;
+    height: calc(var(--uc-icon-size) + var(--uc-padding-vert) * 2) !important;
+    padding: var(--uc-padding-vert) var(--uc-padding-horz) !important;
+}
+/*
+#TabsToolbar-customization-target #PanelUI-menu-button {
+    --uc-padding-horz: 1px;
+    --uc-padding-vert: 1px;
+    --uc-icon-size: 24px;
+}
+*/
+/* these next 2 rules fix some height issues when dragging tabs, needed because of a built-in "feature" */
+#tabbrowser-tabs {
+  margin-bottom: 0px !important;
+}
+#nav-bar {
+  margin-top: 0px !important;
+}
+
+
+/* BOOKMARKS */
+#PersonalToolbar {
+    padding: 1px 0px !important;
+}
+.bookmark-item {
+    color: var(--uc-main-color) !important;
+    /* makes the folder icon the default color */
+    /*fill: unset !important;*/
+}
+#PlacesToolbarItems > .bookmark-item {
+    margin: 0 !important;
+    padding: 4px 3px !important;
+}
+#PlacesToolbarItems > .bookmark-item[type="menu"] > .toolbarbutton-icon {
+    display: none !important;
+}
+#PlacesToolbarItems > .bookmark-item[type="menu"] > .toolbarbutton-text {
+    font-weight: bold !important;
+}
+
+/* custom hover, apply it to all items in the bookmark bar */
+#PlacesChevron,
+#PlacesToolbarItems > .bookmark-item,
+#PersonalToolbar > toolbarbutton {
+    -moz-appearance: toolbarbutton !important;
+    /* this might only be needed in windows 7 */
+    /*margin-top: -1px !important;*/
+    margin-bottom: -1px !important;
+}
+#PlacesChevron:hover:not([disabled]),
+#PlacesToolbarItems > .bookmark-item:hover:not([disabled]),
+#PersonalToolbar > toolbarbutton:hover:not([disabled]) {
+    background-color: -moz-menuhover;
+}
+
+
+/* OVERFLOW */
+#movable-overflow-button {
+    list-style-image: url(chrome://mozapps/skin/extensions/extensionGeneric-16.svg) !important;
+}
+#widget-overflow {
+    margin-top: 3px !important;
+}
+
+
+/* FIND BAR */
+findbar .findbar-closebutton {
+    -moz-box-ordinal-group: 0 !important;
+}
+
+
+/* grab window from the single pixel above the urlbar */
+#TabsToolbar-customization-target {
+    -moz-box-align: center !important;
+}
+
+
+#main-window[sizemode="normal"] #titlebar {
+    margin-top: 2px !important;
+}
+#main-window[sizemode="normal"] #titlebar + * {
+    margin-top: -2px !important;
+}
+#main-window[sizemode="normal"] .titlebar-buttonbox .titlebar-button {
+    margin-top: -2px !important;
+}
+
+.titlebar-buttonbox .titlebar-button {
+    max-height: 26px !important;
+    min-height: 26px !important;
+    padding: 6px 12px !important;
+}
+#bookmarks-menu-button,
+#nav-bar-overflow-button,
+#PlacesToolbarItems > .bookmark-item {
+    margin-top: 0px !important;
+}
+
+#new-tab-button,
+#alltabs-button,
+#TabsToolbar .toolbarbutton-1 {
+    margin-top: -1px !important;
+}
+
+/* hotfix because the bookmarks toolbar is clipping */
+#main-window:not([customizing]) #nav-bar {
+    margin-bottom: -1px !important;
+}
+
+/* URL BAR */
+/*
+#urlbar-input-container,
+#urlbar-container,
+#urlbar {
+    max-width: 450px !important;
+    min-width: 300px !important;
+    width: 450px !important;
+    
+    max-height: 24px !important;
+    min-height: 24px !important;
+    height: 24px !important;
+    
+    border-radius: 0px !important;
+}
+*/
+#urlbar-container {
+    -moz-box-flex: 1 !important;
+    margin: 0px 20px 0px 0px !important;
+    padding: 0px !important;
+    
+    max-width: 450px !important;
+    min-width: 300px !important;
+    width: 450px !important;
+    
+    border-radius: 0px !important;
+}
+#urlbar {
+    font-size: 11px !important;
+    color: var(--uc-main-color-light) !important;
+}
+
+#urlbar:not([focused]) > #urlbar-background {
+    display: none !important;
+}
+#urlbar > #urlbar-background {
+    border: 1px solid var(--uc-tab-border-color) !important;
+    background: white !important;
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    /*display: none !important;*/
+}
+
+.urlbarView-results {
+    padding-block: 0px !important;
+}
+.urlbarView-row,
+.urlbarView-row-inner {
+    border-radius: 0px !important;
+}
+
+/*.urlbarView.megabar .urlbarView-body-inner {
+    width: 100%;
+    border-top: 1px solid var(--urlbar-separator-color);
+}*/
+
+
+
