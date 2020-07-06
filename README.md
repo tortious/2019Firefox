@@ -30,6 +30,15 @@
 
 - extensions.experiments.enabled = true
 
+- toolkit.legacyUserProfileCustomizations.stylesheets = true
+
+- layers.acceleration.force-enabled = true
+
+- gfx.webrender.all = true
+
+- svg.context-properties.content.enabled = true
+
+
 ## Misc Main Menu Ids & Classes
 
 - id: appMenu-addon-banners
