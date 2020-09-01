@@ -38,6 +38,10 @@
 
 - svg.context-properties.content.enabled = true
 
+- browser.urlbar.openintab = true (when typing in the url and you hit enter, it opens the page in a new tab)
+
+- browser.tabs.insertaftercurrent = true (open tabs to the right, always. Removes need for extension that does the same shit)
+
 
 ## Misc Main Menu Ids & Classes
 
