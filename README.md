@@ -42,6 +42,8 @@
 
 - browser.tabs.insertaftercurrent = true (open tabs to the right, always. Removes need for extension that does the same shit)
 
+- browser.display.background_color = #1a1a1a (This stops the preloading blinding white shit. Finally!!!!)
+
 
 ## Misc Main Menu Ids & Classes
 
