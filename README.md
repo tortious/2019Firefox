@@ -20,6 +20,10 @@
 
 ## Misc about:config Changes I Have Made
 
+- browser.proton.enabled = false
+
+- browser.compactmode.show = true
+
 - devtools.debugger.prompt-connection = False (removes box requiring you to accept remote debugging when accessing browser toolbox)
 
 - browser.urlbar.update1 = False (stops urlbar from looking all wonky in FF71. Prob  will be extinct soon as it matures, as suggested by the homie MrOtherGuy somewhere on r/firefoxcss recently. 
