@@ -48,6 +48,24 @@
 
 - browser.display.background_color = #1a1a1a (This stops the preloading blinding white shit. Finally!!!!)
 
+- svg.context-properties.content.enabled
+
+- layout.css.backdrop-filter.enabled
+
+- gfx.webrender.enabled
+
+- gfx.webrender.all
+
+- layers.acceleration.force-enabled
+
+- toolkit.legacyUserProfileCustomizations.stylesheets
+
+
+
+
+
+
+
 
 ## Misc Main Menu Ids & Classes
 
