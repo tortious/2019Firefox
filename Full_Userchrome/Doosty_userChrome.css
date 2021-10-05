@@ -1,0 +1,153 @@
+/* Mandatory imports */
+@import url(CSS/oneliner_navbar_tabs.css);
+@import url(CSS/hiding_elements.css); 
+@import url(CSS/compacting_elements.css); 
+@import url(CSS/userchromefile_related_options.css); 
+@import url(CSS/tweaks_fixes_other.css); 
+@import url(CSS/menu_icons.css); 
+
+
+/* Ultra slim compact mode - makes toolbars even thinner */
+/*
+@import url(CSS/ultra_slim_mode.css);
+*/
+
+
+/* Personal bookmarks bar - autohide */
+@import url(CSS/autohide_bookmarks_toolbar.css);
+
+/* Personal bookmarks bar - show on url focus  */
+#nav-bar:focus-within + #PersonalToolbar{  transition-delay: 100ms !important;  transform: rotateX(0deg);}
+
+/* Personal bookmarks bar - show on hover */
+/*
+#navigator-toolbox:hover > #PersonalToolbar{  transition-delay: 100ms !important;  transform: rotateX(0deg);}
+*/
+
+/* Personal bookmarks bar - normal, no autohiding, toggle with Ctrl+Shift+B or with context menu */
+/* to enable comment out all previous "Personal bookmarks bar" options */
+
+
+:root{
+  /* Navbar width, what remains is taken up by Tabbar */
+  --uc-navigationbar-width: 30vw;  /* enter Xvw for percentage or Xpx for static value */
+  
+  /* Navbar width max - absolute limit it is allowed to expand to */
+  --uc-navigationbar-maxwidth: 550px;  /* set to 9999px to disable */
+
+  /* Toolbar borders height*/
+  --uc-toolbarborder-height: 1px;  /* 0px to disable */
+
+  /* Roundness of tabs, buttons, menus */
+  --uc-roundness: 0px;  /* 0px for rectangular */
+}
+
+
+/* Tab close button - show when hovering over the tab (redundant since midclick closes tab) */
+/*
+.tabbrowser-tab:hover .tab-close-button.close-icon { display: initial !important; }
+*/
+
+
+/* Bookmark star button inside urlbar - hide */
+#star-button-box {display: none;}
+
+
+/* Reader view button inside urlbar - hide  */
+#reader-mode-button {display: none;}
+
+
+/* Navigation buttons - disable */
+/*
+#back-button,#forward-button,#reload-button,#stop-button,#stop-reload-button { display: none !important; }
+*/
+
+
+/* Urlbar opened box - "aero glass" background */
+#urlbar[breakout][breakout-extend] #urlbar-background{  opacity: 0.3; }
+#urlbar[breakout][breakout-extend] { backdrop-filter: blur(10px) invert(10%) !important;}
+
+
+/* Active tab background - more visible */
+/*
+.tab-background[selected="true"], .tab-background[multiselected="true"] {backdrop-filter: blur(2px) invert(30%); background-image: none !important; }
+*/
+
+
+/* Inactive tab background - slightly more visible */
+/*
+.tab-background:not([selected="true"]) { backdrop-filter: blur(1px) invert(5%); background-image: none !important;}
+*/
+
+
+/* Tab borders */
+.tab-background:not([selected="true"]) {border: 1px solid color-mix(in srgb, currentColor 30%, transparent) !important;}
+
+
+/* Tab separators - alternative to borders */
+/*
+.tabbrowser-tab {	border-left: 1px solid color-mix(in srgb, currentcolor 30%, transparent) !important;}
+.tabbrowser-tab[last-visible-tab]{ border-right: 1px solid color-mix(in srgb, currentcolor 30%, transparent) !important;}
+*/
+/* Tab separators - dont show on leftmost and rightmost  */
+/*
+.tabbrowser-tab[first-visible-tab]{ border-left: none !important; } .tabbrowser-tab[last-visible-tab]{ border-right: none !important; }
+*/
+
+
+/* Active tab highlight line on top - makes currently selected tab more visible (bad with Containers addon) */
+/*
+.tab-background[selected]::before, .tabbrowser-tab:hover > stack > .tab-background::before{ height: 2px !important; display: -moz-box !important; content: "";  !important; }
+.tab-stack > .tab-background[selected]::before{ background-color: currentColor !important; background-image: linear-gradient(var(--tab-line-color),var(--tab-line-color)) !important; margin: 1px !important;}
+*/
+
+
+/* Choose one of the two Window control options below (min, max/restore, close), the buttons show on hover and in non maximized windows */
+/* Window control - 1 movable button */
+#minMaxClose-button{display: -moz-box !important;   min-inline-size: 0px !important;  width: 3px !important;  opacity: 0; }
+#minMaxClose-button:hover, #main-window[sizemode="normal"]  #minMaxClose-button, :root [customizing] #minMaxClose-button { opacity: 1; width: var(--uc-toolbar-height) !important;}
+
+
+/* Window control - 3 movable buttons */
+/*
+#uc-controlbutton-container {display: -moz-box !important; min-width: 0; width: 3px; opacity: 0; transition: width 0ms linear 20ms; } #uc-controlbutton-container .titlebar-button {width: var(--uc-toolbar-height) !important; padding: 0 !important;}
+#uc-controlbutton-container:hover, #main-window[sizemode="normal"]  #uc-controlbutton-container, :root [customizing] #uc-controlbutton-container {width: 100%; opacity: 1}
+*/
+/* Window control - 3 movable buttons switch positions to Close -> Max/restore -> Min */
+/*
+#uc-controlbutton-container .titlebar-min {-moz-box-ordinal-group: 3} #uc-controlbutton-container .titlebar-max {-moz-box-ordinal-group: 2} 
+#uc-controlbutton-container .titlebar-restore {-moz-box-ordinal-group: 2} #uc-controlbutton-container .titlebar-close {-moz-box-ordinal-group: 1}
+*/
+
+
+/* Tab text doesnt partially fade when it gets too long */
+.tab-label-container[textoverflow]:not([pinned]){ mask-image: none !important; --tab-label-mask-size: 0px;}
+
+
+/* Urlbar text allignment - options are left, center, right */
+/*
+#urlbar-input {	text-align: center !important; }
+#urlbar-input:focus {	text-align: center !important; }
+*/
+
+
+/* Font styling template for urlbar, inactive tab, active tab + some useful options as an example */
+/*
+#urlbar-input { font-size: 1.1em !important;	font-weight: bold !important; color: currentColor !important; filter: brightness(1.5); }
+.tab-text:not([selected="true"]) {  font-size: 1em;  font-weight: normal; color: currentColor !important; filter: brightness(2) !important; }
+.tab-text[selected="true"] {  font-size: 1.1em;  font-weight: bold; color: red !important;  filter: saturate(2) !important; }
+*/
+
+
+/* AUTHORS PERSONAL PREFERENCE FOR 3RD PARTY GMAIL CHECKER https://addons.mozilla.org/en-US/firefox/addon/checker-plus-gmail/ */
+/* Mail icon that has to be placed next to urlbar only shows when there is mail or when you focus the urlbar */
+/*
+#checkerplusforgmail_jasonsavard_com-browser-action { display: none !important; }
+:root [customizing] #checkerplusforgmail_jasonsavard_com-browser-action,
+:not([label="No unread mail"])#checkerplusforgmail_jasonsavard_com-browser-action,
+#nav-bar:focus-within #checkerplusforgmail_jasonsavard_com-browser-action ,
+#checkerplusforgmail_jasonsavard_com-browser-action[open],
+#checkerplusforgmail_jasonsavard_com-browser-action[open] ~ #checkerplusforgmail_jasonsavard_com-browser-action
+{  display: initial !important; }
+*/
+
