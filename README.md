@@ -22,6 +22,8 @@
 
 - browser.proton.enabled = false
 
+- browser.tabs.warnOnClose = false
+
 - browser.compactmode.show = true
 
 - devtools.debugger.prompt-connection = False (removes box requiring you to accept remote debugging when accessing browser toolbox)
