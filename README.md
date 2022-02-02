@@ -24,6 +24,14 @@
 
 - browser.tabs.warnOnClose = false
 
+- browser.urlbar.suggest.topsites = false (popular sites aren't automatically shown when URL bar gains focus)
+
+- browser.urlbar.suggest.openpage = false (open tabs aren't suggested when typing in the URL bar) 
+
+- browser.urlbar.groupLabels.enabled = false
+
+- browser.urlbar.sponsoredTopSites = false
+
 - browser.compactmode.show = true
 
 - devtools.debugger.prompt-connection = False (removes box requiring you to accept remote debugging when accessing browser toolbox)
