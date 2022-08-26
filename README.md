@@ -70,6 +70,12 @@
 
 - toolkit.legacyUserProfileCustomizations.stylesheets
 
+- devtools.debugger.remote-enabled = true (Enables remote debugging/using the browser toolbox)
+
+- devtools.chrome.enabled = true (enable devtools)
+
+- 
+
 
 
 
